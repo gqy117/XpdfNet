@@ -16,7 +16,7 @@
     <tags>Xpdf PDF</tags>
   </metadata>
   <files>
-    <file src="..\XpdfNet\bin\Release\netcoreapp1.1\XpdfNet.dll" target="lib\netcore1.1" />
+    <file src="..\XpdfNet\bin\Release\netcoreapp1.1\XpdfNet.dll" target="lib" />
     <file src="..\XpdfNet\bin\Release\netcoreapp1.1\pdftotext.exe" target="build" />
     <file src="XpdfNet.targets" target="build" />
   </files>

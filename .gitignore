@@ -152,3 +152,4 @@ Gemfile.lock
 coverage
 
 node_modules
+!pdftotext.exe
