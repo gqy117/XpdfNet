@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <Description>A C# wrapper for Xpdf.</Description>
+    <PackageTags>Xpdf PDF</PackageTags>
+    <Authors>Leo Li</Authors>
+    <Company />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="pdftotext.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
