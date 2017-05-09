@@ -3,7 +3,7 @@
     using System;
     using System.Diagnostics;
     using System.IO;
-    public class PdfHelper
+    public class XpdfHelper
     {
         public XpdfParameter Parameter;
         private const string WorkingDirectory = "./";
