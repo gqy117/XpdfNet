@@ -28,7 +28,7 @@ build:
 test_script:
 # run unit tests
 test_script:
- - ps: .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" "-targetargs:.\XpdfNet.Test\bin\Release\XpdfNet.Test.dll -noshadow" -output:".\coverage.xml" -filter:"+[XpdfNet*]*"
+- ps: .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" "-targetargs:.\XpdfNet.Test\bin\Release\XpdfNet.Test.dll -noshadow" -output:".\coverage.xml" -filter:"+[XpdfNet*]*"
 
 - ps: $env:CODECOV_REPO_TOKEN
 - ps: $env:APPVEYOR_REPO_COMMIT
