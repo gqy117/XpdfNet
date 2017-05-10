@@ -153,3 +153,4 @@ coverage
 
 node_modules
 !pdftotext.exe
+*.nuspec
