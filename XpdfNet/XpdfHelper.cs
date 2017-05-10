@@ -6,9 +6,14 @@
     public class XpdfHelper
     {
         public XpdfParameter Parameter;
-        private const string WorkingDirectory = "./";
-        private string PdfToTextExePath = $"{WorkingDirectory}pdftotext.exe"; 
-        
+        private string WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        private readonly string PdfToTextExePath; 
+
+        public XpdfHelper()
+        {
+            this.PdfToTextExePath = $"{this.WorkingDirectory}pdftotext.exe";
+        }
+
         public string ToText(string pdfFilePath)
         {
             this.Parameter = this.GetParameter(pdfFilePath);
