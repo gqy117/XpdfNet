@@ -1,11 +1,13 @@
 # XpdfNet
-A C# wrapper for Xpdf.
+A C# wrapper for Xpdf. Read text from a pdf file.
 
-# Usage
+
+Usage
+------
 ```csharp
 using XpdfNet;
 
 var pdfHelper = new XpdfHelper();
 
-pdfHelper.ToText("./pathToFile.pdf");
+string content = pdfHelper.ToText("./pathToFile.pdf");
 ```
