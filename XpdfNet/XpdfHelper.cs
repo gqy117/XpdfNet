@@ -11,7 +11,7 @@
 
         public XpdfHelper()
         {
-            this.PdfToTextExePath = $"{this.WorkingDirectory}pdftotext.exe";
+            this.PdfToTextExePath = Path.Combine(this.WorkingDirectory, "pdftotext.exe");
         }
 
         public string ToText(string pdfFilePath)

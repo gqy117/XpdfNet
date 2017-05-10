@@ -3,14 +3,13 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+using Xunit;
 
 namespace XpdfNet.Test
 {
-    [TestFixture]
     public class XpdfHelperTest
     {
-        [Test]
+        [Fact]
         public void ToText_ShouldReturnText()
         {
             // Arrange
@@ -22,7 +21,7 @@ namespace XpdfNet.Test
 
             // Assert
             string expected = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Expected.txt"));
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
         }
     }
 }
