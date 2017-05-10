@@ -2,8 +2,8 @@
 configuration: Release
 
 environment:
-  COVERALLS_REPO_TOKEN:
-    secure: oPWlAm7qUsd8UDn+sKevbeqai8QfEDr5CdBFgL5aFSuRJdDzAz226rL6oIsHEDev
+  CODECOV_REPO_TOKEN:
+    secure: Gm6pCHRiChufnol8chZS6FwGaxHedbxk+Kr4BEupfpVqzOYfRIFIxg1DXReYZR7s
   os: Visual Studio 2017
 
 
@@ -27,9 +27,10 @@ build:
 
 test_script:
 # run unit tests
-#- ps: .\WebSite\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -target:.\WebSite\packages\NUnit.Runners.2.6.4\tools\nunit-console.exe "-targetargs:"".\WebSite\Test\WebToolService.Test\bin\$env:CONFIGURATION\WebToolService.Test.dll" ".\WebSite\Test\Utilities.Test\bin\$env:CONFIGURATION\Utilities.Test.dll" ".\WebSite\Test\WebTool.Test\bin\$env:CONFIGURATION\WebTool.Test.dll"" /noshadow /nologo" -returntargetcode -filter:"+[WebToolService|Utilities|WebTool]*" -output:opencoverCoverage.xml
+test_script:
+ - ps: .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" "-targetargs:.\XpdfNet.Test\bin\Release\XpdfNet.Test.dll -noshadow" -output:".\coverage.xml" -filter:"+[XpdfNet*]*"
 
-- ps: $env:COVERALLS_REPO_TOKEN
+- ps: $env:CODECOV_REPO_TOKEN
 - ps: $env:APPVEYOR_REPO_COMMIT
 - ps: $env:APPVEYOR_REPO_BRANCH
 - ps: $env:APPVEYOR_REPO_COMMIT_AUTHOR
@@ -45,7 +46,9 @@ test_script:
 
 - after_test:
 - ps: .\nuget\pack.ps1
-
+- "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
+- pip install codecov
+- codecov -f "coverage.xml" -t $env:CODECOV_REPO_TOKEN
 
 artifacts:
   - path: '*.nupkg'
