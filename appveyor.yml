@@ -1,0 +1,65 @@
+# build Configuration, i.e. Debug, Release, etc.
+configuration: Release
+
+environment:
+  COVERALLS_REPO_TOKEN:
+    secure: oPWlAm7qUsd8UDn+sKevbeqai8QfEDr5CdBFgL5aFSuRJdDzAz226rL6oIsHEDev
+  os: Visual Studio 2017
+
+
+before_build:
+  - nuget restore XpdfNet.sln
+
+
+# to add several configurations to build matrix:
+#configuration:
+#  - Debug
+#  - Release
+
+build:
+  parallel: true                    # enable MSBuild parallel builds
+  project: XpdfNet.sln      # path to Visual Studio solution or project
+  publish_wap: true
+
+
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+test_script:
+# run unit tests
+#- ps: .\WebSite\packages\OpenCover.4.6.166\tools\OpenCover.Console.exe -register:user -target:.\WebSite\packages\NUnit.Runners.2.6.4\tools\nunit-console.exe "-targetargs:"".\WebSite\Test\WebToolService.Test\bin\$env:CONFIGURATION\WebToolService.Test.dll" ".\WebSite\Test\Utilities.Test\bin\$env:CONFIGURATION\Utilities.Test.dll" ".\WebSite\Test\WebTool.Test\bin\$env:CONFIGURATION\WebTool.Test.dll"" /noshadow /nologo" -returntargetcode -filter:"+[WebToolService|Utilities|WebTool]*" -output:opencoverCoverage.xml
+
+- ps: $env:COVERALLS_REPO_TOKEN
+- ps: $env:APPVEYOR_REPO_COMMIT
+- ps: $env:APPVEYOR_REPO_BRANCH
+- ps: $env:APPVEYOR_REPO_COMMIT_AUTHOR
+- ps: $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL
+- ps: $env:APPVEYOR_REPO_COMMIT_MESSAGE
+
+
+# upload results to AppVeyor
+#- ps: $wc = New-Object 'System.Net.WebClient'
+#- ps: $wc.UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\TestResult.xml))
+
+- ps: $env:APPVEYOR_BUILD_NUMBER
+
+
+#---------------------------------#
+#     deployment configuration    #
+#---------------------------------#
+
+# providers: Local, FTP, WebDeploy, AzureCS, AzureBlob, S3, NuGet, Environment
+# provider names are case-sensitive!
+deploy:
+    # Deploying to a named environment
+  - provider: NuGet
+    api_key:
+      secure: Wrkxnbucd5TOMxg4b0JjpgexOfRlxd9gmm8XKZnjUTjn2H1uvfnVSoV6jbmkwUre
+    artifact: /.*\.nupkg/
+    on:
+      branch: master
+
+# clear github badge cache
+#on_success:
+#- curl -X PURGE https://camo.githubusercontent.com/b5a05a66dcd05757f3624da408ea0e5a243cc4f5/68747470733a2f2f636f766572616c6c732e696f2f7265706f732f6769746875622f6771793131372f576562546f6f6c2f62616467652e7376673f6272616e63683d6d61737465722631
