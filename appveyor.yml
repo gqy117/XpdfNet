@@ -19,7 +19,6 @@ before_build:
 build:
   parallel: true                    # enable MSBuild parallel builds
   project: XpdfNet.sln      # path to Visual Studio solution or project
-  publish_wap: true
 
 
 #---------------------------------#
@@ -44,6 +43,8 @@ test_script:
 
 - ps: $env:APPVEYOR_BUILD_NUMBER
 
+- after_test:
+- ps: nuget\pack.ps1
 
 #---------------------------------#
 #     deployment configuration    #
