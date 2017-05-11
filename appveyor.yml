@@ -2,7 +2,7 @@
 configuration: Release
 
 environment:
-  CODECOV_REPO_TOKEN:
+  CODECOV_TOKEN:
     secure: Gm6pCHRiChufnol8chZS6FwGaxHedbxk+Kr4BEupfpVqzOYfRIFIxg1DXReYZR7s
   os: Visual Studio 2017
 
@@ -29,7 +29,7 @@ build:
 test_script:
 - ps: .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" "-targetargs:.\XpdfNet.Test\bin\Release\XpdfNet.Test.dll -noshadow" -output:".\coverage.xml" -filter:"+[XpdfNet*]*"
 
-- ps: $env:CODECOV_REPO_TOKEN
+- ps: $env:CODECOV_TOKEN
 - ps: $env:APPVEYOR_REPO_COMMIT
 - ps: $env:APPVEYOR_REPO_BRANCH
 - ps: $env:APPVEYOR_REPO_COMMIT_AUTHOR
@@ -47,7 +47,7 @@ test_script:
 - ps: .\nuget\pack.ps1
 - "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
 - pip install codecov
-- codecov -f "coverage.xml" -t $(CODECOV_REPO_TOKEN)
+- codecov -f "coverage.xml" -t $(CODECOV_TOKEN)
 
 artifacts:
   - path: '*.nupkg'
