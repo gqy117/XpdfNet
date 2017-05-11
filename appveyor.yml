@@ -3,7 +3,7 @@ configuration: Release
 
 environment:
   CODECOV_TOKEN:
-    secure: Gm6pCHRiChufnol8chZS6FwGaxHedbxk+Kr4BEupfpVqzOYfRIFIxg1DXReYZR7s
+    secure: XxAwta0CJROTWAW5GFA83PnTXrGHcyJs7KDBOQNkntfkhydKHYjL+oAVGx5lXv6c
   os: Visual Studio 2017
 
 
