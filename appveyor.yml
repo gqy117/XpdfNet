@@ -47,7 +47,7 @@ test_script:
 - "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
 - pip install codecov
 - ps: $env:CODECOV_TOKEN
-- ps: codecov -t $env:CODECOV_TOKEN
+- ps: codecov -f "coverage.xml" -t $env:CODECOV_TOKEN
 
 artifacts:
   - path: '*.nupkg'
