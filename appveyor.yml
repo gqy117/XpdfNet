@@ -2,8 +2,8 @@
 configuration: Release
 
 environment:
-  CODECOV_REPO_TOKEN:
-    secure: Gm6pCHRiChufnol8chZS6FwGaxHedbxk+Kr4BEupfpVqzOYfRIFIxg1DXReYZR7s
+  CODECOV_TOKEN:
+    secure: XxAwta0CJROTWAW5GFA83PnTXrGHcyJs7KDBOQNkntfkhydKHYjL+oAVGx5lXv6c
   os: Visual Studio 2017
 
 
@@ -29,7 +29,6 @@ build:
 test_script:
 - ps: .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" "-targetargs:.\XpdfNet.Test\bin\Release\XpdfNet.Test.dll -noshadow" -output:".\coverage.xml" -filter:"+[XpdfNet*]*"
 
-- ps: $env:CODECOV_REPO_TOKEN
 - ps: $env:APPVEYOR_REPO_COMMIT
 - ps: $env:APPVEYOR_REPO_BRANCH
 - ps: $env:APPVEYOR_REPO_COMMIT_AUTHOR
@@ -47,7 +46,7 @@ test_script:
 - ps: .\nuget\pack.ps1
 - "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
 - pip install codecov
-- codecov -f "coverage.xml" -t $env:CODECOV_REPO_TOKEN
+- codecov -f "coverage.xml" -t %CODECOV_TOKEN%
 
 artifacts:
   - path: '*.nupkg'
@@ -71,3 +70,5 @@ deploy:
 # clear github badge cache
 #on_success:
 #- curl -X PURGE https://camo.githubusercontent.com/b5a05a66dcd05757f3624da408ea0e5a243cc4f5/68747470733a2f2f636f766572616c6c732e696f2f7265706f732f6769746875622f6771793131372f576562546f6f6c2f62616467652e7376673f6272616e63683d6d61737465722631
+on_failure:
+- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))

@@ -1,9 +1,9 @@
 # XpdfNet
 A C# wrapper for Xpdf. Read text from a pdf file.
 
-Branch  | Build Status |
--------- | :------------: |
-master | [![Build status](https://ci.appveyor.com/api/projects/status/50tcsir5rpwmw4w7?svg=true)](https://ci.appveyor.com/project/gqy117/xpdfnet) |
+Branch  | Build Status | Code Coverage| NuGet |
+-------- | :------------: | :------------: | :------------: |
+master | [![Build Status](https://ci.appveyor.com/api/projects/status/50tcsir5rpwmw4w7?svg=true)](https://ci.appveyor.com/project/gqy117/xpdfnet)| [![codecov](https://codecov.io/gh/gqy117/XpdfNet/branch/master/graph/badge.svg)](https://codecov.io/gh/gqy117/XpdfNet) | [![nuget](https://img.shields.io/nuget/v/XpdfNet.svg)](https://www.nuget.org/packages/XpdfNet)|
 
 Usage
 ------
