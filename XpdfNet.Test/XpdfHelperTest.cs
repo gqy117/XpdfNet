@@ -10,14 +10,21 @@ namespace XpdfNet.Test
 {
     public class XpdfHelperTest
     {
+        private XpdfHelper XpdfHelper;
+        
+
+        public XpdfHelperTest()
+        {
+            this.XpdfHelper = new XpdfHelper();
+        }
+
         [Fact]
         public void ToText_ShouldReturnText()
         {
             // Arrange
-            XpdfHelper xpdfHelper = new XpdfHelper();
 
             // Act
-            string actual = xpdfHelper.ToText("./sample1.pdf");
+            string actual = this.XpdfHelper.ToText("./sample1.pdf");
             actual = actual.Replace("\f", "");
             actual = Regex.Replace(actual, @"\r\n?|\n", string.Empty);
 

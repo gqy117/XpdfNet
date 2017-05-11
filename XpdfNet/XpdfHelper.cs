@@ -5,13 +5,14 @@
     using System.IO;
     public class XpdfHelper
     {
+        public string PDFToTextExe = "pdftotext.exe";
         public XpdfParameter Parameter;
         private string WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        private readonly string PdfToTextExePath; 
+        private readonly string PdfToTextExePath;
 
         public XpdfHelper()
         {
-            this.PdfToTextExePath = Path.Combine(this.WorkingDirectory, "pdftotext.exe");
+            this.PdfToTextExePath = Path.Combine(this.WorkingDirectory, PDFToTextExe);
         }
 
         public string ToText(string pdfFilePath)
@@ -20,32 +21,15 @@
 
             var arguments = this.SetArguments(Parameter);
 
-            Process process = this.CreateProcess(arguments);
-
-            process.Start();
-
-            process.WaitForExit();
+            ProcessService processService = new ProcessService(this.PdfToTextExePath, arguments, this.WorkingDirectory);
+            processService.StartAndWaitForExit();
 
             var textResult = this.GetTextResult(Parameter);
 
             return textResult;
         }
 
-        private Process CreateProcess(string arguments)
-        {
-            return new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = this.PdfToTextExePath,
-                    Arguments = arguments,
-                    UseShellExecute = false,
-                    WorkingDirectory = WorkingDirectory,
-                    RedirectStandardOutput = true,
-                    CreateNoWindow = true
-                }
-            };
-        }
+
 
         /// <summary>
         /// Reading that file and ignoring from the "Date Printed" text
