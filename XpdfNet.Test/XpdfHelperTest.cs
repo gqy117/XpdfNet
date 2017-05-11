@@ -3,14 +3,14 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+using Xunit;
+using System.Text.RegularExpressions;
 
 namespace XpdfNet.Test
 {
-    [TestFixture]
     public class XpdfHelperTest
     {
-        [Test]
+        [Fact]
         public void ToText_ShouldReturnText()
         {
             // Arrange
@@ -19,10 +19,13 @@ namespace XpdfNet.Test
             // Act
             string actual = xpdfHelper.ToText("./sample1.pdf");
             actual = actual.Replace("\f", "");
+            actual = Regex.Replace(actual, @"\r\n?|\n", string.Empty);
 
             // Assert
             string expected = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Expected.txt"));
-            Assert.AreEqual(expected, actual);
+            expected = Regex.Replace(expected, @"\r\n?|\n", string.Empty);
+
+            Assert.Equal(expected, actual);
         }
     }
 }
