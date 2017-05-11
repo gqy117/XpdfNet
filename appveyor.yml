@@ -46,8 +46,7 @@ test_script:
 - ps: .\nuget\pack.ps1
 - "SET PATH=C:\\Python34;C:\\Python34\\Scripts;%PATH%"
 - pip install codecov
-- ps: $env:CODECOV_TOKEN
-- ps: codecov -f "coverage.xml" -t $env:CODECOV_TOKEN
+- ps: codecov -f ".\coverage.xml" -t $env:CODECOV_TOKEN
 
 artifacts:
   - path: '*.nupkg'
@@ -71,3 +70,5 @@ deploy:
 # clear github badge cache
 #on_success:
 #- curl -X PURGE https://camo.githubusercontent.com/b5a05a66dcd05757f3624da408ea0e5a243cc4f5/68747470733a2f2f636f766572616c6c732e696f2f7265706f732f6769746875622f6771793131372f576562546f6f6c2f62616467652e7376673f6272616e63683d6d61737465722631
+on_failure:
+- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
