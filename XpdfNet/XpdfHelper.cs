@@ -3,15 +3,18 @@
     using System;
     using System.Diagnostics;
     using System.IO;
+    using System.Reflection;
+
     public class XpdfHelper
     {
-        public string PDFToTextExe = "pdftotext.exe";
+        private const string PDFToTextExe = "pdftotext.exe";
         public XpdfParameter Parameter;
-        private string WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory;
+        private readonly string WorkingDirectory;
         private readonly string PdfToTextExePath;
 
         public XpdfHelper()
         {
+            this.WorkingDirectory = Directory.GetCurrentDirectory();
             this.PdfToTextExePath = Path.Combine(this.WorkingDirectory, PDFToTextExe);
         }
 
