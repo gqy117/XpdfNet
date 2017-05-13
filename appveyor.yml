@@ -9,6 +9,9 @@ environment:
 before_build:
   - nuget restore
 
+build:
+  project: XpdfNet.sln
+
 #---------------------------------#
 #       tests configuration       #
 #---------------------------------#
