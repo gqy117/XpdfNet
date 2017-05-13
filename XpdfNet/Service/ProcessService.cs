@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace XpdfNet
+﻿namespace XpdfNet
 {
+    using System;
+    using System.ComponentModel;
+    using System.Diagnostics;
+
     public class ProcessService
     {
         private readonly Process Process;

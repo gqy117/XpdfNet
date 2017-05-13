@@ -1,9 +1,7 @@
 ﻿namespace XpdfNet
 {
     using System;
-    using System.Diagnostics;
     using System.IO;
-    using System.Reflection;
 
     public class XpdfHelper
     {
@@ -11,11 +9,17 @@
         public XpdfParameter Parameter;
         private readonly string WorkingDirectory;
         private readonly string PdfToTextExePath;
+        private readonly DirectoryService DirectoryService;
 
-        public XpdfHelper()
+        public XpdfHelper() : this(new DirectoryService())
         {
-            this.WorkingDirectory = Directory.GetCurrentDirectory();
+            this.WorkingDirectory = this.DirectoryService.GetWorkingDirectory();
             this.PdfToTextExePath = Path.Combine(this.WorkingDirectory, PDFToTextExe);
+        }
+
+        public XpdfHelper(DirectoryService directoryService)
+        {
+            this.DirectoryService = directoryService;
         }
 
         public string ToText(string pdfFilePath)

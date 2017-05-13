@@ -1,13 +1,10 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Xunit;
-using System.Text.RegularExpressions;
-
-namespace XpdfNet.Test
+﻿namespace XpdfNet.Test
 {
+    using System;
+    using System.IO;
+    using System.Text.RegularExpressions;
+    using Xunit;
+
     public class XpdfHelperTest
     {
         private XpdfHelper XpdfHelper;
