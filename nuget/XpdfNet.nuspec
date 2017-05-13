@@ -16,8 +16,8 @@
     <tags>Xpdf PDF</tags>
   </metadata>
   <files>
-    <file src="..\XpdfNet\bin\Release\XpdfNet.dll" target="lib\net45" />
-    <file src="..\XpdfNet\bin\Release\pdftotext.exe" target="build" />
+    <file src="..\XpdfNet\bin\Release\**\*.dll" target="lib" />
+    <file src="..\XpdfNet\pdftotext.exe" target="build" />
     <file src="XpdfNet.targets" target="build" />
   </files>
 </package>
