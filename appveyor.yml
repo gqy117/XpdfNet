@@ -1,25 +1,16 @@
-# build Configuration, i.e. Debug, Release, etc.
+image: Visual Studio 2017
 configuration: Release
 
 environment:
+  dotnetcore_version: 1.0.3
   CODECOV_TOKEN:
     secure: XxAwta0CJROTWAW5GFA83PnTXrGHcyJs7KDBOQNkntfkhydKHYjL+oAVGx5lXv6c
-  os: Visual Studio 2017
-
 
 before_build:
-  - nuget restore XpdfNet.sln
-
-
-# to add several configurations to build matrix:
-#configuration:
-#  - Debug
-#  - Release
+  - nuget restore
 
 build:
-  parallel: true                    # enable MSBuild parallel builds
-  project: XpdfNet.sln      # path to Visual Studio solution or project
-
+  project: XpdfNet.sln
 
 #---------------------------------#
 #       tests configuration       #
