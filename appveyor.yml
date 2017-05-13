@@ -6,6 +6,9 @@ environment:
   CODECOV_TOKEN:
     secure: XxAwta0CJROTWAW5GFA83PnTXrGHcyJs7KDBOQNkntfkhydKHYjL+oAVGx5lXv6c
 
+before_build:
+  - nuget restore
+
 #---------------------------------#
 #       tests configuration       #
 #---------------------------------#
