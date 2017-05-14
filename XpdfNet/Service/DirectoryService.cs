@@ -8,10 +8,10 @@
         {
             string workingDirectory;
 
-#if NETCOREAPP1_1
-            workingDirectory = AppContext.BaseDirectory;
-#else
+#if NET45
             workingDirectory = AppDomain.CurrentDomain.BaseDirectory;
+#else
+            workingDirectory = AppContext.BaseDirectory;
 #endif
 
             return workingDirectory;
