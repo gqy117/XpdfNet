@@ -1,4 +1,4 @@
-﻿namespace XpdfNet.Test
+﻿namespace XpdfNet.Tests
 {
     using System;
     using Xunit;
