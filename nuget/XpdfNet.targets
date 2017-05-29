@@ -1,6 +1,6 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)pdftotext.exe">
+    <None Include="$(MSBuildThisFileDirectory)pdftotext.exe" Condition="'$(OS)' == 'Windows_NT'">
       <Link>pdftotext.exe</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
