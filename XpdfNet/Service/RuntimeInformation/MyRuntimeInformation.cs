@@ -16,6 +16,10 @@
             {
                 os = OS.Linux;
             }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                os = OS.Windows;
+            }
 #endif
 
             return os;

@@ -5,19 +5,17 @@
 
     public class XpdfHelper
     {
-        private const string PDFToTextExe = "pdftotext.exe";
+        private string PDFToTextExe;
         public XpdfParameter Parameter;
-        private readonly string WorkingDirectory;
-        private readonly string PdfToTextExePath;
-        private readonly IRuntimeInformation RuntimeInformation;
-        private readonly DirectoryService DirectoryService;
+        private string WorkingDirectory;
+        private string PdfToTextExePath;
+        private IRuntimeInformation RuntimeInformation;
+        private DirectoryService DirectoryService;
 
         public XpdfHelper()
         {
-            this.RuntimeInformation = new MyRuntimeInformation();
-            this.DirectoryService = new DirectoryService(this.RuntimeInformation);
-            this.WorkingDirectory = this.DirectoryService.GetWorkingDirectory();
-            this.PdfToTextExePath = Path.Combine(this.WorkingDirectory, PDFToTextExe);
+            this.InitDirectoryService();
+            this.InitPdfToTextExePath();
         }
 
         public string ToText(string pdfFilePath)
@@ -79,6 +77,19 @@
             string arguments = String.Join(" ", argumentsArray);
 
             return arguments;
+        }
+
+        private void InitPdfToTextExePath()
+        {
+            this.PDFToTextExe = this.DirectoryService.GetPDFToTextExeFilename();
+            this.WorkingDirectory = this.DirectoryService.GetWorkingDirectory();
+            this.PdfToTextExePath = Path.Combine(this.WorkingDirectory, this.PDFToTextExe);
+        }
+
+        private void InitDirectoryService()
+        {
+            this.RuntimeInformation = new MyRuntimeInformation();
+            this.DirectoryService = new DirectoryService(this.RuntimeInformation);
         }
 
         private string WrapQuotes(string text)
