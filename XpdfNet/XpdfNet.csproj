@@ -17,6 +17,9 @@
     <DebugSymbols>True</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <None Update="pdftotext">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="pdftotext.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

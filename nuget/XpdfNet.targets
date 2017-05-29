@@ -4,5 +4,9 @@
       <Link>pdftotext.exe</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="$(MSBuildThisFileDirectory)pdftotext" Condition="'$(OS)' == 'Unix'">
+      <Link>pdftotext</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
