@@ -5,7 +5,7 @@ dotnet: 1.0.4
 dist: trusty
 
 install:
-  - nuget restore XpdfNet.sln
+  - dotnet restore XpdfNet.sln
 
 script:
   - dotnet test ./XpdfNet.Tests/XpdfNet.Tests.csproj
