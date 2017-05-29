@@ -1,0 +1,8 @@
+language: csharp
+solution: XpdfNet.sln
+mono: none
+dotnet: 1.0.4
+dist: trusty
+
+script:
+  - dotnet test ./XpdfNet.Tests/XpdfNet.Tests.csproj
