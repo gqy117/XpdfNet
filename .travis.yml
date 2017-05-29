@@ -8,4 +8,4 @@ install:
   - dotnet restore XpdfNet.sln
 
 script:
-  - dotnet test ./XpdfNet.Tests/XpdfNet.Tests.csproj
+  - dotnet test ./XpdfNet.Tests/XpdfNet.Tests.csproj -f netcoreapp1.1
