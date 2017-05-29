@@ -9,17 +9,15 @@
         public XpdfParameter Parameter;
         private readonly string WorkingDirectory;
         private readonly string PdfToTextExePath;
+        private readonly IRuntimeInformation RuntimeInformation;
         private readonly DirectoryService DirectoryService;
 
-        public XpdfHelper() : this(new DirectoryService())
+        public XpdfHelper()
         {
+            this.RuntimeInformation = new MyRuntimeInformation();
+            this.DirectoryService = new DirectoryService(this.RuntimeInformation);
             this.WorkingDirectory = this.DirectoryService.GetWorkingDirectory();
             this.PdfToTextExePath = Path.Combine(this.WorkingDirectory, PDFToTextExe);
-        }
-
-        public XpdfHelper(DirectoryService directoryService)
-        {
-            this.DirectoryService = directoryService;
         }
 
         public string ToText(string pdfFilePath)
@@ -35,8 +33,6 @@
 
             return textResult;
         }
-
-
 
         /// <summary>
         /// Reading that file and ignoring from the "Date Printed" text
@@ -84,7 +80,6 @@
 
             return arguments;
         }
-
 
         private string WrapQuotes(string text)
         {
