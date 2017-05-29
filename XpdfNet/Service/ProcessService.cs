@@ -39,7 +39,7 @@
             }
             catch (Win32Exception ex)
             {
-                throw new Exception($"The system cannot find the file specified. Filename: {Filename}, WorkingDirectory: {WorkingDirectory}.");
+                throw new Exception($"Message: {ex.Message}. InnerException: {ex.InnerException}. Filename: {Filename}, WorkingDirectory: {WorkingDirectory}.");
             }
         }
     }
