@@ -7,6 +7,6 @@ namespace XpdfNet
 
         XpdfParameter GetParameter(string pdfFilePath);
 
-        string SetArguments(XpdfParameter parameter);
+        string GetArguments(XpdfParameter parameter);
     }
 }

@@ -5,7 +5,7 @@
 
     public class XpdfHelper
     {
-        private string PDFToTextFilename;
+        private string Filename;
         public XpdfParameter Parameter;
         private string WorkingDirectory;
         private IRuntimeInformation RuntimeInformation = new MyRuntimeInformation();
@@ -14,14 +14,15 @@
 
         public XpdfHelper()
         {
-            this.InitDirectoryService();
+            this.RuntimeInformation = new MyRuntimeInformation();
+            this.DirectoryService = new DirectoryServiceFactory().GetDirectoryService(this.RuntimeInformation);
         }
 
         public string ToText(string pdfFilePath)
         {
             this.PrepareParameters(pdfFilePath);
 
-            ProcessService processService = new ProcessService(this.PDFToTextFilename, this.Arguments, this.WorkingDirectory);
+            ProcessService processService = new ProcessService(this.Filename, this.Arguments, this.WorkingDirectory);
             processService.StartAndWaitForExit();
 
             var textResult = this.GetTextResult(Parameter);
@@ -39,18 +40,12 @@
 
         private void PrepareParameters(string pdfFilePath)
         {
-            this.PDFToTextFilename = this.DirectoryService.Filename;
+            this.Filename = this.DirectoryService.Filename;
             this.WorkingDirectory = this.DirectoryService.WorkingDirectory;
 
             this.Parameter = this.DirectoryService.GetParameter(pdfFilePath);
 
-            this.Arguments = this.DirectoryService.SetArguments(this.Parameter);
-        }
-
-        private void InitDirectoryService()
-        {
-            this.RuntimeInformation = new MyRuntimeInformation();
-            this.DirectoryService = new DirectoryServiceFactory().GetDirectoryService(this.RuntimeInformation);
+            this.Arguments = this.DirectoryService.GetArguments(this.Parameter);
         }
     }
 }

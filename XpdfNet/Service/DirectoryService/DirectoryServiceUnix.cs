@@ -12,8 +12,17 @@
         {
             get
             {
-                return PDFToTextExeUnix;
+                return "sudo";
             }
+        }
+
+        public override string GetArguments(XpdfParameter parameter)
+        {
+            string arguments = base.GetArguments(parameter);
+
+            string newArguments = $"{PDFToTextExeUnix} {arguments}";
+
+            return newArguments;
         }
     }
 }

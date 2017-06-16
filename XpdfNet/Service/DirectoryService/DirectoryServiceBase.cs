@@ -34,7 +34,7 @@
             };
         }
 
-        public string SetArguments(XpdfParameter parameter)
+        public virtual string GetArguments(XpdfParameter parameter)
         {
             string[] argumentsArray =
             {
@@ -48,13 +48,12 @@
             return arguments;
         }
 
-
-        private string WrapQuotes(string text)
+        protected string WrapQuotes(string text)
         {
             return this.WrapWith(text, "\"");
         }
 
-        private string WrapWith(string text, string ends)
+        protected string WrapWith(string text, string ends)
         {
             return ends + text + ends;
         }
