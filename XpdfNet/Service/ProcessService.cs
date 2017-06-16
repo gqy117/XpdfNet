@@ -8,12 +8,14 @@
     {
         private readonly Process Process;
         private readonly string Filename;
+        private readonly string Arguments;
         private readonly string WorkingDirectory;
 
 
         public ProcessService(string filename, string arguments, string workingDirectory)
         {
             this.Filename = filename;
+            this.Arguments = arguments;
             this.WorkingDirectory = workingDirectory;
 
             this.Process = new Process
@@ -39,7 +41,7 @@
             }
             catch (Win32Exception ex)
             {
-                throw new Exception($"Message: {ex.Message}. InnerException: {ex.InnerException}. Filename: {Filename}, WorkingDirectory: {WorkingDirectory}.");
+                throw new Exception($"Message: {ex.Message}. InnerException: {ex.InnerException}. Filename: {Filename}; Arguments: {Arguments}; WorkingDirectory: {WorkingDirectory};");
             }
         }
     }

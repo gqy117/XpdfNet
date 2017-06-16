@@ -21,7 +21,7 @@
             Exception ex = Assert.Throws<Exception>(() => this.ProcessService.StartAndWaitForExit());
 
             // Assert
-            string expected = $"{filename}";
+            string expected = $"Filename: {filename}; Arguments: {arguments}; WorkingDirectory: {workingDirectory};";
             Assert.Contains(expected, ex.Message);
         }
     }
