@@ -21,8 +21,7 @@
 
             // Act
             string actual = this.XpdfHelper.ToText("./sample1.pdf");
-            actual = actual.Replace("\f", "");
-            actual = Regex.Replace(actual, @"\r\n?|\n", string.Empty);
+            actual = RemoveWhiteSpace(actual);
 
             // Assert
             string workingDirectory;
@@ -34,9 +33,17 @@
 #endif
 
             string expected = File.ReadAllText(Path.Combine(workingDirectory, "Expected.txt"));
-            expected = Regex.Replace(expected, @"\r\n?|\n", string.Empty);
+            expected = RemoveWhiteSpace(expected);
 
             Assert.Equal(expected, actual);
+        }
+
+        private string RemoveWhiteSpace(string input)
+        {
+            input = input.Replace("\f", "");
+            input = Regex.Replace(input, @"\r\n?|\n", string.Empty);
+
+            return input;
         }
     }
 }
