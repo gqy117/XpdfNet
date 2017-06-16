@@ -10,13 +10,13 @@
 
     public class DirectoryServiceTest
     {
-        private DirectoryService DirectoryService;
+        private DirectoryServiceBase _directoryServiceBase;
         private Mock<IRuntimeInformation> MockRuntimeInformation;
 
         public DirectoryServiceTest()
         {
             this.MockRuntimeInformation = new Mock<IRuntimeInformation>();
-            this.DirectoryService = new DirectoryService(this.MockRuntimeInformation.Object);
+            this._directoryServiceBase = new DirectoryServiceBase(this.MockRuntimeInformation.Object);
         }
 
         [Fact]
@@ -26,7 +26,7 @@
             this.MockRuntimeInformation.Setup(x => x.GetOSPlatform()).Returns(OS.Linux);
 
             // Act
-            string actual = this.DirectoryService.GetPDFToTextExeFilename();
+            string actual = this._directoryServiceBase.Filename;
 
             // Assert
             string expected = "pdftotext";
@@ -40,7 +40,7 @@
             this.MockRuntimeInformation.Setup(x => x.GetOSPlatform()).Returns(OS.OSX);
 
             // Act
-            Exception ex = Assert.Throws<ArgumentException>(() => this.DirectoryService.GetPDFToTextExeFilename());
+            Exception ex = Assert.Throws<ArgumentException>(() => this._directoryServiceBase.Filename);
 
             // Assert
             string expected = "XpdfNet currently only supports Unit and Windows OS.";
@@ -55,7 +55,7 @@
             this.MockRuntimeInformation.Setup(x => x.GetOSPlatform()).Returns(OS.Windows);
 
             // Act
-            string actual = this.DirectoryService.GetPDFToTextExeFilename();
+            string actual = this._directoryServiceBase.Filename;
 
             // Assert
             string expected = "pdftotext.exe";
