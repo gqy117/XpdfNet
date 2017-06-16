@@ -26,7 +26,7 @@
             string actual = this.DirectoryService.Filename;
 
             // Assert
-            string expected = "sudo";
+            string expected = "/bin/bash";
             Assert.Equal(expected, actual);
         }
 
@@ -45,7 +45,7 @@
             string actual = this.DirectoryService.GetArguments(parameter);
 
             // Assert
-            string expected = "pdftotext -enc UTF-8 \"1.pdf\" \"1.txt\"";
+            string expected = "-c \"sudo pdftotext -enc UTF-8 \"1.pdf\" \"1.txt\"\"";
             Assert.Equal(expected, actual);
         }
     }

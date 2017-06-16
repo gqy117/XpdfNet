@@ -7,13 +7,14 @@
     public class DirectoryServiceLinux : DirectoryServiceBase
     {
         private const string PDFToTextExeUnix = "pdftotext";
-        private const string SUDO = "sudo";
+        private const string Bash = "/bin/bash";
+        private const string Sudo = "sudo";
 
         public override string Filename
         {
             get
             {
-                return SUDO;
+                return Bash;
             }
         }
 
@@ -21,14 +22,7 @@
         {
             string arguments = base.GetArguments(parameter);
 
-            var newArguments = InsertPDFToTextIntoArguments(arguments);
-
-            return newArguments;
-        }
-
-        private string InsertPDFToTextIntoArguments(string arguments)
-        {
-            string newArguments = $"{PDFToTextExeUnix} {arguments}";
+            var newArguments = $"-c \"{Sudo} {PDFToTextExeUnix} {arguments}\"";
 
             return newArguments;
         }
