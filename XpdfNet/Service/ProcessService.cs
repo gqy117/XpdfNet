@@ -40,7 +40,7 @@
             }
             catch (Win32Exception ex)
             {
-                throw new Exception($"Message: {ex.Message}. InnerException: {ex.InnerException}. filename: {this.filename}; arguments: {this.arguments}; workingDirectory: {this.workingDirectory};");
+                throw new Exception($"Message: {ex.Message}. InnerException: {ex.InnerException}. Filename: {this.filename}; Arguments: {this.arguments}; WorkingDirectory: {this.workingDirectory};");
             }
         }
     }
