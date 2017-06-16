@@ -12,15 +12,27 @@
 #if NET45
             os = OS.Windows;
 #else
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            bool isLinux = RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+            bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+
+            os = GetOSPlatform(isLinux, isWindows);
+#endif
+
+            return os;
+        }
+
+        public OS GetOSPlatform(bool isLinux, bool isWindows)
+        {
+            OS os = OS.Unsupported;
+
+            if (isLinux)
             {
                 os = OS.Linux;
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            else if (isWindows)
             {
                 os = OS.Windows;
             }
-#endif
 
             return os;
         }

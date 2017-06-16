@@ -25,6 +25,30 @@
             Assert.Equal(expected, actual);
         }
 
+        [Theory]
+        [InlineData(true, false)]
+        public void GetOSPlatform_ShouldReturnLinux(bool isLinux, bool isWindows)
+        {
+            // Act
+            OS actual = this.MyRuntimeInformation.GetOSPlatform(isLinux, isWindows);
+
+            // Assert
+            OS expected = OS.Linux;
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(false, false)]
+        public void GetOSPlatform_ShouldReturnUnsupport(bool isLinux, bool isWindows)
+        {
+            // Act
+            OS actual = this.MyRuntimeInformation.GetOSPlatform(isLinux, isWindows);
+
+            // Assert
+            OS expected = OS.Unsupported;
+            Assert.Equal(expected, actual);
+        }
+
         private OS GetCurrentOS()
         {
             OS os = OS.Unsupported;
