@@ -21,8 +21,8 @@
             Exception ex = Assert.Throws<Exception>(() => this.ProcessService.StartAndWaitForExit());
 
             // Assert
-            string expected = $"The system cannot find the file specified. Filename: {filename}, WorkingDirectory: {workingDirectory}.";
-            Assert.Equal(expected, ex.Message);
+            string expected = $"{filename}";
+            Assert.Contains(expected, ex.Message);
         }
     }
 }

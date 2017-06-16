@@ -18,6 +18,7 @@
   <files>
     <file src="..\XpdfNet\bin\Release\**\XpdfNet.dll" target="lib" />
     <file src="..\XpdfNet\pdftotext.exe" target="build" />
+    <file src="..\XpdfNet\pdftotext" target="build" />
     <file src="XpdfNet.targets" target="build" />
   </files>
 </package>
