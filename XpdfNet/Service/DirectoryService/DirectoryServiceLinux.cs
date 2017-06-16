@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    public class DirectoryServiceUnix : DirectoryServiceBase
+    public class DirectoryServiceLinux : DirectoryServiceBase
     {
         private const string PDFToTextExeUnix = "pdftotext";
 

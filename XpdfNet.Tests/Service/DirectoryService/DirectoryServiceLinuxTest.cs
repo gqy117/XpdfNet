@@ -8,13 +8,13 @@
     using Xunit;
     using XpdfNet;
 
-    public class DirectoryServiceUnixTest
+    public class DirectoryServiceLinuxTest
     {
         private IDirectoryService DirectoryService;
 
-        public DirectoryServiceUnixTest()
+        public DirectoryServiceLinuxTest()
         {
-            this.DirectoryService = new DirectoryServiceUnix();
+            this.DirectoryService = new DirectoryServiceLinux();
         }
 
         [Fact]

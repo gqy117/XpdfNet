@@ -17,13 +17,13 @@
                     break;
 
                 case OS.Linux:
-                    result = new DirectoryServiceUnix();
+                    result = new DirectoryServiceLinux();
                     break;
 
                 default:
                 case OS.Unsupported:
                 case OS.OSX:
-                    throw new ArgumentException("XpdfNet currently only supports Unix and Windows OS.");
+                    throw new ArgumentException("XpdfNet currently only supports Linux and Windows OS.");
             }
 
             return result;
