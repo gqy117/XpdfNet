@@ -42,6 +42,7 @@
         {
             input = input.Replace("\f", "");
             input = Regex.Replace(input, @"\r\n?|\n", string.Empty);
+            input = Regex.Replace(input, @"\s+", "");
 
             return input;
         }
