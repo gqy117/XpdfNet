@@ -1,0 +1,12 @@
+language: csharp
+solution: XpdfNet.sln
+mono: none
+dotnet: 1.0.4
+dist: trusty
+
+install:
+  - sudo apt-get install -y poppler-utils
+  - dotnet restore XpdfNet.sln
+
+script:
+  - dotnet test ./XpdfNet.Tests/XpdfNet.Tests.csproj -f netcoreapp1.1
