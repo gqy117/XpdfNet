@@ -7,18 +7,18 @@
 
     public class MyRuntimeInformationTest
     {
-        private MyRuntimeInformation MyRuntimeInformation;
+        private MyRuntimeInformation myRuntimeInformation;
 
         public MyRuntimeInformationTest()
         {
-            this.MyRuntimeInformation = new MyRuntimeInformation();
+            this.myRuntimeInformation = new MyRuntimeInformation();
         }
 
         [Fact]
         public void GetOSPlatform_ShouldReturnCorrespondingOS()
         {
             // Act
-            OS actual = this.MyRuntimeInformation.GetOSPlatform();
+            OS actual = this.myRuntimeInformation.GetOSPlatform();
 
             // Assert
             OS expected = this.GetCurrentOS();
@@ -30,7 +30,7 @@
         public void GetOSPlatform_ShouldReturnLinux(bool isLinux, bool isWindows)
         {
             // Act
-            OS actual = this.MyRuntimeInformation.GetOSPlatform(isLinux, isWindows);
+            OS actual = this.myRuntimeInformation.GetOSPlatform(isLinux, isWindows);
 
             // Assert
             OS expected = OS.Linux;
@@ -42,7 +42,7 @@
         public void GetOSPlatform_ShouldReturnUnsupport(bool isLinux, bool isWindows)
         {
             // Act
-            OS actual = this.MyRuntimeInformation.GetOSPlatform(isLinux, isWindows);
+            OS actual = this.myRuntimeInformation.GetOSPlatform(isLinux, isWindows);
 
             // Assert
             OS expected = OS.Unsupported;

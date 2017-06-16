@@ -5,16 +5,16 @@
     using System.Runtime.InteropServices;
     using System.Text;
     using Moq;
-    using Xunit;
     using XpdfNet;
+    using Xunit;
 
     public class DirectoryServiceLinuxTest
     {
-        private IDirectoryService DirectoryService;
+        private IDirectoryService directoryService;
 
         public DirectoryServiceLinuxTest()
         {
-            this.DirectoryService = new DirectoryServiceLinux();
+            this.directoryService = new DirectoryServiceLinux();
         }
 
         [Fact]
@@ -23,7 +23,7 @@
             // Arrange
 
             // Act
-            string actual = this.DirectoryService.Filename;
+            string actual = this.directoryService.Filename;
 
             // Assert
             string expected = "/bin/bash";
@@ -42,7 +42,7 @@
             };
 
             // Act
-            string actual = this.DirectoryService.GetArguments(parameter);
+            string actual = this.directoryService.GetArguments(parameter);
 
             // Assert
             string expected = "-c \"sudo pdftotext -enc UTF-8 \"1.pdf\" \"1.txt\"\"";

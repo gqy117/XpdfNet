@@ -1,20 +1,19 @@
-﻿using System.IO;
-
-namespace XpdfNet
+﻿namespace XpdfNet
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Text;
 
     public class DirectoryServiceWindows : DirectoryServiceBase
     {
-        private const string PDFToTextExeWindowNT = "pdftotext.exe";
+        private const string PDFToText = "pdftotext.exe";
 
         public override string Filename
         {
             get
             {
-                string filename = Path.Combine(base.WorkingDirectory, PDFToTextExeWindowNT);
+                string filename = Path.Combine(this.WorkingDirectory, PDFToText);
                 return filename;
             }
         }
