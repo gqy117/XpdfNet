@@ -15,7 +15,7 @@
             bool isLinux = RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
             bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
 
-            os = GetOSPlatform(isLinux, isWindows);
+            os = this.GetOSPlatform(isLinux, isWindows);
 #endif
 
             return os;
@@ -37,5 +37,4 @@
             return os;
         }
     }
-
 }

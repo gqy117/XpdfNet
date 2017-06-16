@@ -5,27 +5,27 @@
 
     public class XpdfHelper
     {
-        private string Filename;
-        public XpdfParameter Parameter;
-        private string WorkingDirectory;
-        private IRuntimeInformation RuntimeInformation = new MyRuntimeInformation();
-        private IDirectoryService DirectoryService;
-        private string Arguments;
+        private string filename;
+        private XpdfParameter parameter;
+        private string workingDirectory;
+        private IRuntimeInformation runtimeInformation = new MyRuntimeInformation();
+        private IDirectoryService directoryService;
+        private string arguments;
 
         public XpdfHelper()
         {
-            this.RuntimeInformation = new MyRuntimeInformation();
-            this.DirectoryService = new DirectoryServiceFactory().GetDirectoryService(this.RuntimeInformation);
+            this.runtimeInformation = new MyRuntimeInformation();
+            this.directoryService = new DirectoryServiceFactory().GetDirectoryService(this.runtimeInformation);
         }
 
         public string ToText(string pdfFilePath)
         {
             this.PrepareParameters(pdfFilePath);
 
-            ProcessService processService = new ProcessService(this.Filename, this.Arguments, this.WorkingDirectory);
+            ProcessService processService = new ProcessService(this.filename, this.arguments, this.workingDirectory);
             processService.StartAndWaitForExit();
 
-            var textResult = this.GetTextResult(Parameter);
+            var textResult = this.GetTextResult(this.parameter);
 
             return textResult;
         }
@@ -40,12 +40,12 @@
 
         private void PrepareParameters(string pdfFilePath)
         {
-            this.Filename = this.DirectoryService.Filename;
-            this.WorkingDirectory = this.DirectoryService.WorkingDirectory;
+            this.filename = this.directoryService.Filename;
+            this.workingDirectory = this.directoryService.WorkingDirectory;
 
-            this.Parameter = this.DirectoryService.GetParameter(pdfFilePath);
+            this.parameter = this.directoryService.GetParameter(pdfFilePath);
 
-            this.Arguments = this.DirectoryService.GetArguments(this.Parameter);
+            this.arguments = this.directoryService.GetArguments(this.parameter);
         }
     }
 }
