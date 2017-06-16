@@ -29,5 +29,24 @@
             string expected = "sudo";
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void GetArguments_ShouldReturnPdftotextAndArguments()
+        {
+            // Arrange
+            XpdfParameter parameter = new XpdfParameter
+            {
+                Encoding = "-enc UTF-8",
+                PdfFilename = "1.pdf",
+                OutputFilename = "1.txt"
+            };
+
+            // Act
+            string actual = this.DirectoryService.GetArguments(parameter);
+
+            // Assert
+            string expected = "pdftotext -enc UTF-8 \"1.pdf\" \"1.txt\"";
+            Assert.Equal(expected, actual);
+        }
     }
 }
