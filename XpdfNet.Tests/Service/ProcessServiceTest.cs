@@ -5,7 +5,7 @@
 
     public class ProcessServiceTest
     {
-        private ProcessService ProcessService;
+        private ProcessService processService;
 
         [Fact]
         public void ToText_ShouldThrowExceptionWithPathInformation_WhenPDFToTextExeCanNotBeFound()
@@ -15,10 +15,10 @@
             string arguments = "arg1 arg2";
             string workingDirectory = "./";
 
-            this.ProcessService = new ProcessService(filename, arguments, workingDirectory);
+            this.processService = new ProcessService(filename, arguments, workingDirectory);
 
             // Act
-            Exception ex = Assert.Throws<Exception>(() => this.ProcessService.StartAndWaitForExit());
+            Exception ex = Assert.Throws<Exception>(() => this.processService.StartAndWaitForExit());
 
             // Assert
             string expected = $"Filename: {filename}; Arguments: {arguments}; WorkingDirectory: {workingDirectory};";
