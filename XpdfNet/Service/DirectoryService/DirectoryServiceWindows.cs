@@ -17,5 +17,12 @@
                 return filename;
             }
         }
+
+        public override string GetArguments(XpdfParameter parameter)
+        {
+            var arguments = this.JoinXpdfParameters(parameter);
+
+            return arguments;
+        }
     }
 }

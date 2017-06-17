@@ -34,7 +34,9 @@
             };
         }
 
-        public virtual string GetArguments(XpdfParameter parameter)
+        public abstract string GetArguments(XpdfParameter parameter);
+
+        protected string JoinXpdfParameters(XpdfParameter parameter)
         {
             string[] argumentsArray =
             {
@@ -44,7 +46,6 @@
             };
 
             string arguments = string.Join(" ", argumentsArray);
-
             return arguments;
         }
 

@@ -20,7 +20,7 @@
 
         public override string GetArguments(XpdfParameter parameter)
         {
-            string arguments = base.GetArguments(parameter);
+            string arguments = this.JoinXpdfParameters(parameter);
 
             var newArguments = $"-c \"{Sudo} {PDFToText} {arguments}\"";
 
