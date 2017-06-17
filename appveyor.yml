@@ -10,7 +10,7 @@ before_build:
   - nuget restore
 
 build:
-  project: XpdfNet.sln
+  project: ./src/XpdfNet.sln
 
 #---------------------------------#
 #       tests configuration       #
@@ -18,7 +18,7 @@ build:
 
 # run unit tests
 test_script:
-- C:\Users\appveyor\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe -register:user -target:"C:\Program Files\dotnet\dotnet.exe" "-targetargs:test .\XpdfNet.Tests\XpdfNet.Tests.csproj" -output:".\coverage.xml" -filter:"+[XpdfNet*]* -[XpdfNet.Tests*]* -[xunit*]*" -oldstyle -returntargetcode
+- C:\Users\appveyor\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe -register:user -target:"C:\Program Files\dotnet\dotnet.exe" "-targetargs:test .\src\XpdfNet.Tests\XpdfNet.Tests.csproj" -output:".\coverage.xml" -filter:"+[XpdfNet*]* -[XpdfNet.Tests*]* -[xunit*]*" -oldstyle -returntargetcode
 
 - ps: $env:APPVEYOR_REPO_COMMIT
 - ps: $env:APPVEYOR_REPO_BRANCH
