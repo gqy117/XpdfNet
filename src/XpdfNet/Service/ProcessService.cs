@@ -6,17 +6,18 @@
 
     public class ProcessService
     {
-        private readonly Process Process;
-        private readonly string Filename;
-        private readonly string WorkingDirectory;
-
+        private readonly Process process;
+        private readonly string filename;
+        private readonly string arguments;
+        private readonly string workingDirectory;
 
         public ProcessService(string filename, string arguments, string workingDirectory)
         {
-            this.Filename = filename;
-            this.WorkingDirectory = workingDirectory;
+            this.filename = filename;
+            this.arguments = arguments;
+            this.workingDirectory = workingDirectory;
 
-            this.Process = new Process
+            this.process = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
@@ -34,12 +35,12 @@
         {
             try
             {
-                this.Process.Start();
-                this.Process.WaitForExit();
+                this.process.Start();
+                this.process.WaitForExit();
             }
             catch (Win32Exception ex)
             {
-                throw new Exception($"Message: {ex.Message}. InnerException: {ex.InnerException}. Filename: {Filename}, WorkingDirectory: {WorkingDirectory}.");
+                throw new Exception($"Message: {ex.Message}. InnerException: {ex.InnerException}. Filename: {this.filename}; Arguments: {this.arguments}; WorkingDirectory: {this.workingDirectory};");
             }
         }
     }

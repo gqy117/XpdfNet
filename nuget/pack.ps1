@@ -1,6 +1,6 @@
 $root = (split-path -parent $MyInvocation.MyCommand.Definition) + '\..'
 $projectName = "XpdfNet"
-$csproj = [xml] (Get-Content $root\$projectName\$projectName.csproj)
+$csproj = [xml] (Get-Content $root\src\$projectName\$projectName.csproj)
 $versionStr = $csproj.Project.PropertyGroup.Version
 
 Write-Host "Setting .nuspec version tag to $versionStr"

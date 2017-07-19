@@ -2,32 +2,28 @@
 {
     using System;
     using System.IO;
-    using System.Collections.Generic;
-    using System.Runtime.InteropServices;
-    using System.Text;
-    using Moq;
-    using Xunit;
     using XpdfNet;
+    using Xunit;
 
     public class DirectoryServiceWindowsTest
     {
-        private IDirectoryService DirectoryService;
+        private IDirectoryService directoryService;
 
         public DirectoryServiceWindowsTest()
         {
-            this.DirectoryService = new DirectoryServiceWindows();
+            this.directoryService = new DirectoryServiceWindows();
         }
-        
+
         [Fact]
         public void GetPDFToTextExeFilename_ShouldReturnPdftotextExe_WhenItIsWindows()
         {
             // Arrange
 
             // Act
-            string actual = this.DirectoryService.Filename;
+            string actual = this.directoryService.Filename;
 
             // Assert
-            string expected = Path.Combine(this.DirectoryService.WorkingDirectory, "pdftotext.exe");
+            string expected = Path.Combine(this.directoryService.WorkingDirectory, "pdftotext.exe");
             Assert.Equal(expected, actual);
         }
     }

@@ -30,11 +30,13 @@
             {
                 Encoding = "-enc UTF-8",
                 PdfFilename = pdfFilePath,
-                OutputFilename = Path.Combine(WorkingDirectory, Guid.NewGuid() + ".txt")
+                OutputFilename = Path.Combine(this.WorkingDirectory, Guid.NewGuid() + ".txt")
             };
         }
 
-        public virtual string GetArguments(XpdfParameter parameter)
+        public abstract string GetArguments(XpdfParameter parameter);
+
+        protected string JoinXpdfParameters(XpdfParameter parameter)
         {
             string[] argumentsArray =
             {
@@ -43,8 +45,7 @@
                 this.WrapQuotes(parameter.OutputFilename),
             };
 
-            string arguments = String.Join(" ", argumentsArray);
-
+            string arguments = string.Join(" ", argumentsArray);
             return arguments;
         }
 
