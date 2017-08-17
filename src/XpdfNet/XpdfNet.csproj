@@ -26,12 +26,14 @@
     <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="pdftotext">
+    <ContentWithTargetPath Include="lib\pdftotext">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="pdftotext.exe">
+      <TargetPath>pdftotext</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="lib\pdftotext.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+      <TargetPath>pdftotext.exe</TargetPath>
+    </ContentWithTargetPath>
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">
     <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
