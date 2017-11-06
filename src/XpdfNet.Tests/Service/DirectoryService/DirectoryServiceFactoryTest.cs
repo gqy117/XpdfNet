@@ -32,11 +32,14 @@
             Assert.IsType<DirectoryServiceLinux>(actual);
         }
 
-        [Fact]
-        public void GetPDFToTextExeFilename_ShouldThrowAnException_WhenItIsOSX()
+        [Theory]
+        [InlineData(OS.OSX)]
+        [InlineData(OS.Unsupported)]
+        [InlineData(null)]
+        public void GetPDFToTextExeFilename_ShouldThrowAnException_WhenItIsOSX(OS os)
         {
             // Arrange
-            this.mockRuntimeInformation.Setup(x => x.GetOSPlatform()).Returns(OS.OSX);
+            this.mockRuntimeInformation.Setup(x => x.GetOSPlatform()).Returns(os);
 
             // Act
             Exception ex = Assert.Throws<ArgumentException>(() => this.directoryServiceFactory.GetDirectoryService(this.mockRuntimeInformation.Object));
