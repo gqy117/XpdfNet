@@ -21,8 +21,6 @@
                     break;
 
                 default:
-                case OS.Unsupported:
-                case OS.OSX:
                     throw new ArgumentException("XpdfNet currently only supports Linux and Windows OS.");
             }
 
