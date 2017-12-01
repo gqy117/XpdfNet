@@ -1,5 +1,5 @@
 # XpdfNet
-A C# wrapper for Xpdf. Read text from a pdf file.
+A C# wrapper for [Xpdf](https://www.xpdfreader.com/ "Xpdf"). Read text from a pdf file.
 
 Branch  | Appveyor | TravisCI | Code Coverage| NuGet |
 -------- | :------------: | :------------: | :------------: | :------------: |
