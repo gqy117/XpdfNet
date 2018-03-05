@@ -1,6 +1,7 @@
 ﻿namespace XpdfNet.Tests
 {
     using System;
+    using System.Globalization;
     using System.IO;
     using System.Text.RegularExpressions;
     using Xunit;
@@ -40,8 +41,6 @@
 
         private string RemoveWhiteSpace(string input)
         {
-            input = input.Replace("\f", string.Empty);
-            input = Regex.Replace(input, @"\r\n?|\n", string.Empty);
             input = Regex.Replace(input, @"\s+", string.Empty);
 
             return input;
