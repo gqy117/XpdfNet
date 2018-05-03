@@ -26,13 +26,17 @@
     <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
   </ItemGroup>
   <ItemGroup>
-    <ContentWithTargetPath Include="lib\pdftotext">
+    <ContentWithTargetPath Include="lib\Windows_NT\pdftotext.exe" Condition=" '$(OS)' == 'Windows_NT' ">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>pdftotext.exe</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="lib\Unix\pdftotext" Condition=" '$(OS)' == 'Unix' ">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>pdftotext</TargetPath>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="lib\pdftotext.exe">
+    <ContentWithTargetPath Include="lib\OSX\pdftotext" Condition=" '$(OS)' == 'OSX' ">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <TargetPath>pdftotext.exe</TargetPath>
+      <TargetPath>pdftotext</TargetPath>
     </ContentWithTargetPath>
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">
