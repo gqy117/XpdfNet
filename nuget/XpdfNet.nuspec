@@ -12,12 +12,12 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A C# wrapper for Xpdf.</description>
     <releaseNotes></releaseNotes>
-    <copyright>Copyright 2017</copyright>
+    <copyright>Copyright 2018</copyright>
     <tags>Xpdf PDF</tags>
   </metadata>
   <files>
     <file src="..\src\XpdfNet\bin\Release\**\XpdfNet.dll" target="lib" />
-    <file src="..\src\XpdfNet\lib\*" target="build" />
+    <file src="..\src\XpdfNet\lib\**\*" target="build" />
     <file src="XpdfNet.targets" target="build" />
   </files>
 </package>

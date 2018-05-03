@@ -1,10 +1,14 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)pdftotext.exe" Condition="'$(OS)' == 'Windows_NT'">
+    <None Include="$(MSBuildThisFileDirectory)Windows_NT/pdftotext.exe" Condition="'$(OS)' == 'Windows_NT'">
       <Link>pdftotext.exe</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="$(MSBuildThisFileDirectory)pdftotext" Condition="'$(OS)' == 'Unix'">
+    <None Include="$(MSBuildThisFileDirectory)Unix/pdftotext" Condition="'$(OS)' == 'Unix'">
+      <Link>pdftotext</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)OSX/pdftotext" Condition="'$(OS)' == 'OSX'">
       <Link>pdftotext</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
