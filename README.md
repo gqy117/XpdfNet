@@ -1,9 +1,9 @@
 # XpdfNet
 A C# wrapper for Xpdf. Read text from a pdf file.
 
-Branch  | Appveyor | TravisCI | Code Coverage| NuGet |
--------- | :------------: | :------------: | :------------: | :------------: |
-master | [![Build Status](https://ci.appveyor.com/api/projects/status/50tcsir5rpwmw4w7?svg=true)](https://ci.appveyor.com/project/gqy117/xpdfnet)| [![Build Status](https://travis-ci.org/gqy117/XpdfNet.svg?branch=master)](https://travis-ci.org/gqy117/XpdfNet) | [![codecov](https://codecov.io/gh/gqy117/XpdfNet/branch/master/graph/badge.svg)](https://codecov.io/gh/gqy117/XpdfNet) | [![nuget](https://img.shields.io/nuget/v/XpdfNet.svg)](https://www.nuget.org/packages/XpdfNet)|
+Branch  | Appveyor | TravisCI | Code Coverage| Codacy | Nuget
+-------- | :------------: | :------------: | :------------: | :------------: | :------------: |
+master | [![Build Status](https://ci.appveyor.com/api/projects/status/50tcsir5rpwmw4w7?svg=true)](https://ci.appveyor.com/project/gqy117/xpdfnet)| [![Build Status](https://travis-ci.org/gqy117/XpdfNet.svg?branch=master)](https://travis-ci.org/gqy117/XpdfNet) | [![codecov](https://codecov.io/gh/gqy117/XpdfNet/branch/master/graph/badge.svg)](https://codecov.io/gh/gqy117/XpdfNet) | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/018a69933f1246fe82c5eb6b78e23ad4)](https://app.codacy.com/app/gqy117/XpdfNet?utm_source=github.com&utm_medium=referral&utm_content=gqy117/XpdfNet&utm_campaign=badger) |[![nuget](https://img.shields.io/nuget/v/XpdfNet.svg)](https://www.nuget.org/packages/XpdfNet)|
 
 Usage
 ------
