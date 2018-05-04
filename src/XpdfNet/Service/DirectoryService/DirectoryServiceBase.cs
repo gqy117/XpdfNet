@@ -51,7 +51,7 @@
 
         protected string WrapQuotes(string text)
         {
-            return this.WrapWith(text, "'");
+            return this.WrapWith(text, "\"");
         }
 
         protected string WrapWith(string text, string ends)
