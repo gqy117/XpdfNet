@@ -1,5 +1,5 @@
 language: csharp
-solution: ./src/XpdfNet.sln
+solution: ./XpdfNet.sln
 mono: none
 dotnet: 1.0.4
 dist: trusty
@@ -9,7 +9,7 @@ os:
   - osx
 
 install:
-  - dotnet restore ./XpdfNet.sln
+  - ulimit -n 2048; dotnet restore ./XpdfNet.sln
 
 script:
   - dotnet test ./src/XpdfNet.Tests/XpdfNet.Tests.csproj -f netcoreapp1.1
