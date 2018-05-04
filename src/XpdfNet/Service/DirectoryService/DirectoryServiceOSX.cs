@@ -24,7 +24,7 @@
             string arguments = this.JoinXpdfParameters(parameter);
             string pdfToText = Path.Combine(this.WorkingDirectory, PDFToText);
 
-            var newArguments = $"-c \"{Sudo} {pdfToText} {arguments}\"";
+            var newArguments = $"-c \"chmod +x {pdfToText}; {pdfToText} {arguments}\"";
 
             return newArguments;
         }
