@@ -32,6 +32,19 @@
             Assert.IsType<DirectoryServiceLinux>(actual);
         }
 
+        [Fact]
+        public void GetDirectoryService_ShouldReturnDirectoryServiceOSX_WhenItIsOSX()
+        {
+            // Arrange
+            this.mockRuntimeInformation.Setup(x => x.GetOSPlatform()).Returns(OS.OSX);
+
+            // Act
+            var actual = this.directoryServiceFactory.GetDirectoryService(this.mockRuntimeInformation.Object);
+
+            // Assert
+            Assert.IsType<DirectoryServiceOSX>(actual);
+        }
+
         [Theory]
         [InlineData(OS.Unsupported)]
         [InlineData(null)]
