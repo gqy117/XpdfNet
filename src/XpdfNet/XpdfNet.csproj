@@ -22,19 +22,26 @@
     <TreatSpecificWarningsAsErrors />
     <NoWarn>1701;1702;1705;SA1633;SA1652;</NoWarn>
   </PropertyGroup>
+    <PropertyGroup>
+    <IsWindows Condition="'$(OS)' == 'Windows_NT'">true</IsWindows>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildRuntimeType)' == 'Core'">
+    <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+    <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
   </ItemGroup>
   <ItemGroup>
-    <ContentWithTargetPath Include="lib\Windows_NT\pdftotext.exe" Condition=" '$(OS)' == 'Windows_NT' ">
+    <ContentWithTargetPath Include="lib\Windows_NT\pdftotext.exe" Condition="$(IsWindows) == 'true'">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>pdftotext.exe</TargetPath>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="lib\Unix\pdftotext" Condition=" '$(OS)' == 'Unix' ">
+    <ContentWithTargetPath Include="lib\OSX\pdftotext" Condition="$(IsOSX) == 'true'">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>pdftotext</TargetPath>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="lib\OSX\pdftotext" Condition=" '$(OS)' == 'OSX' ">
+    <ContentWithTargetPath Include="lib\Unix\pdftotext" Condition="$(IsLinux) == 'true'">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>pdftotext</TargetPath>
     </ContentWithTargetPath>

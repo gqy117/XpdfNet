@@ -45,7 +45,7 @@
             OS actual = this.myRuntimeInformation.GetOSPlatform(isLinux, isWindows);
 
             // Assert
-            OS expected = OS.Unsupported;
+            OS expected = OS.OSX;
             Assert.Equal(expected, actual);
         }
 

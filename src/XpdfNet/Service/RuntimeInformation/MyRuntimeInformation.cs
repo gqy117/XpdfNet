@@ -23,7 +23,7 @@
 
         public OS GetOSPlatform(bool isLinux, bool isWindows)
         {
-            OS os = OS.Unsupported;
+            OS os = OS.OSX;
 
             if (isLinux)
             {
