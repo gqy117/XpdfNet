@@ -17,8 +17,11 @@
                     break;
 
                 case OS.Linux:
-                case OS.OSX:
                     result = new DirectoryServiceLinux();
+                    break;
+
+                case OS.OSX:
+                    result = new DirectoryServiceOSX();
                     break;
 
                 default:

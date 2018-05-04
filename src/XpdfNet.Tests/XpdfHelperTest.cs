@@ -21,7 +21,7 @@
             // Arrange
 
             // Act
-            string actual = this.xpdfHelper.ToText("./sample1.pdf");
+            string actual = this.xpdfHelper.ToText("sample1.pdf");
             actual = this.RemoveWhiteSpace(actual);
 
             // Assert
