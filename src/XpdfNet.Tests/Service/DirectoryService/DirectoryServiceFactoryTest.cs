@@ -33,7 +33,6 @@
         }
 
         [Theory]
-        [InlineData(OS.OSX)]
         [InlineData(OS.Unsupported)]
         [InlineData(null)]
         public void GetPDFToTextExeFilename_ShouldThrowAnException_WhenItIsOSX(OS os)
@@ -45,7 +44,7 @@
             Exception ex = Assert.Throws<ArgumentException>(() => this.directoryServiceFactory.GetDirectoryService(this.mockRuntimeInformation.Object));
 
             // Assert
-            string expected = "XpdfNet currently only supports Linux and Windows OS.";
+            string expected = "XpdfNet currently only supports Linux, Windows and OSX.";
             Assert.Equal(expected, ex.Message);
         }
 
