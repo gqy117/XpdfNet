@@ -9,7 +9,7 @@ os:
   - osx
 
 install:
-  - dotnet restore ./src/XpdfNet.sln
+  - dotnet restore ./XpdfNet.sln
 
 script:
   - dotnet test ./src/XpdfNet.Tests/XpdfNet.Tests.csproj -f netcoreapp1.1
