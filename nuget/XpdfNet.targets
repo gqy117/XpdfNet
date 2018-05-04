@@ -1,14 +1,22 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IsWindows Condition="'$(OS)' == 'Windows_NT'">true</IsWindows>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildRuntimeType)' == 'Core'">
+    <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+    <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+  </PropertyGroup>
+
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)Windows_NT/pdftotext.exe" Condition="'$(OS)' == 'Windows_NT'">
+    <None Include="$(MSBuildThisFileDirectory)Windows_NT/pdftotext.exe" Condition="$(IsWindows) == 'true'">
       <Link>pdftotext.exe</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="$(MSBuildThisFileDirectory)Unix/pdftotext" Condition="'$(OS)' == 'Unix'">
+    <None Include="$(MSBuildThisFileDirectory)Unix/pdftotext" Condition="$(IsLinux) == 'true'">
       <Link>pdftotext</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="$(MSBuildThisFileDirectory)OSX/pdftotext" Condition="'$(OS)' == 'OSX'">
+    <None Include="$(MSBuildThisFileDirectory)OSX/pdftotext" Condition="$(IsOSX) == 'true'">
       <Link>pdftotext</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
