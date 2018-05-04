@@ -17,8 +17,6 @@
             this.arguments = arguments;
             this.workingDirectory = workingDirectory;
 
-            Console.WriteLine($"Filename: {this.filename}; Arguments: {this.arguments}; WorkingDirectory: {this.workingDirectory}");
-
             this.process = new Process
             {
                 StartInfo = new ProcessStartInfo

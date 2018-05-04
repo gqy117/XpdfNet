@@ -41,22 +41,22 @@
             return ends + text + ends;
         }
 
+        protected static string WrapQuotes(string text)
+        {
+            return WrapWith(text, "\"");
+        }
+
         protected string JoinXpdfParameters(XpdfParameter parameter)
         {
             string[] argumentsArray =
             {
                 parameter.Encoding,
-                this.WrapQuotes(parameter.PdfFilename),
-                this.WrapQuotes(parameter.OutputFilename),
+                WrapQuotes(parameter.PdfFilename),
+                WrapQuotes(parameter.OutputFilename),
             };
 
             string arguments = string.Join(" ", argumentsArray);
             return arguments;
-        }
-
-        protected string WrapQuotes(string text)
-        {
-            return WrapWith(text, "\"");
         }
     }
 }

@@ -7,7 +7,7 @@
     {
         public OS GetOSPlatform()
         {
-            OS os = OS.Unsupported;
+            OS os;
 
 #if NET45
             os = OS.Windows;

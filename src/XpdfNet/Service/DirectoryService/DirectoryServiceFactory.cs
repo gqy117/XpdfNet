@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Text;
 
-    public class DirectoryServiceFactory
+    public static class DirectoryServiceFactory
     {
         public static IDirectoryService GetDirectoryService(IRuntimeInformation runtimeInformation)
         {
