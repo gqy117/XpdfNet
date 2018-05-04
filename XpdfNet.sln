@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XpdfNet", "XpdfNet\XpdfNet.csproj", "{F1082DC1-E451-49C7-A71D-0D4FEDA740F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XpdfNet", "src\XpdfNet\XpdfNet.csproj", "{F1082DC1-E451-49C7-A71D-0D4FEDA740F8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XpdfNet.Tests", "XpdfNet.Tests\XpdfNet.Tests.csproj", "{FDBADBBB-7B35-4B47-A1C9-F7772EB87FA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XpdfNet.Tests", "src\XpdfNet.Tests\XpdfNet.Tests.csproj", "{FDBADBBB-7B35-4B47-A1C9-F7772EB87FA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
