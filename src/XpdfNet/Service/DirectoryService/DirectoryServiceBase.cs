@@ -29,7 +29,7 @@
             return new XpdfParameter
             {
                 Encoding = "-enc UTF-8",
-                PdfFilename = Path.Combine(this.WorkingDirectory, pdfFilePath),
+                PdfFilename = pdfFilePath,
                 OutputFilename = Path.Combine(this.WorkingDirectory, Guid.NewGuid() + ".txt")
             };
         }
