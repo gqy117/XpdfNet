@@ -45,7 +45,7 @@
             string actual = this.directoryService.GetArguments(parameter);
 
             // Assert
-            string expected = "-c \"sudo pdftotext -enc UTF-8 \"1.pdf\" \"1.txt\"\"";
+            string expected = "-c \"chmod +x ./pdftotext; ./pdftotext -enc UTF-8 \"1.pdf\" \"1.txt\"\"";
             Assert.Equal(expected, actual);
         }
     }
