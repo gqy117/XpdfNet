@@ -7,10 +7,10 @@ environment:
     secure: XxAwta0CJROTWAW5GFA83PnTXrGHcyJs7KDBOQNkntfkhydKHYjL+oAVGx5lXv6c
 
 before_build:
-  - nuget restore ./src/XpdfNet.sln
+  - nuget restore ./XpdfNet.sln
 
 build:
-  project: ./src/XpdfNet.sln
+  project: ./XpdfNet.sln
 
 #---------------------------------#
 #       tests configuration       #

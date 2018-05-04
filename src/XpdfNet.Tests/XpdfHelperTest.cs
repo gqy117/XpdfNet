@@ -8,7 +8,7 @@
 
     public class XpdfHelperTest
     {
-        private XpdfHelper xpdfHelper;
+        private readonly XpdfHelper xpdfHelper;
 
         public XpdfHelperTest()
         {
@@ -21,8 +21,8 @@
             // Arrange
 
             // Act
-            string actual = this.xpdfHelper.ToText("./sample1.pdf");
-            actual = this.RemoveWhiteSpace(actual);
+            string actual = this.xpdfHelper.ToText("sample1.pdf");
+            actual = RemoveWhiteSpace(actual);
 
             // Assert
             string workingDirectory;
@@ -34,16 +34,16 @@
 #endif
 
             string expected = File.ReadAllText(Path.Combine(workingDirectory, "Expected.txt"));
-            expected = this.RemoveWhiteSpace(expected);
+            expected = RemoveWhiteSpace(expected);
 
             Assert.Equal(expected, actual);
         }
 
-        private string RemoveWhiteSpace(string input)
+        private static string RemoveWhiteSpace(string input)
         {
-            input = Regex.Replace(input, @"\s+", string.Empty);
+            var result = Regex.Replace(input, @"\s+", string.Empty);
 
-            return input;
+            return result;
         }
     }
 }

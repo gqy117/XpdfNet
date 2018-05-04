@@ -1,6 +1,7 @@
 ﻿namespace XpdfNet.Tests
 {
     using System;
+    using System.ComponentModel;
     using Xunit;
 
     public class ProcessServiceTest
@@ -18,7 +19,7 @@
             this.processService = new ProcessService(filename, arguments, workingDirectory);
 
             // Act
-            Exception ex = Assert.Throws<Exception>(() => this.processService.StartAndWaitForExit());
+            Exception ex = Assert.Throws<Win32Exception>(() => this.processService.StartAndWaitForExit());
 
             // Assert
             string expected = $"Filename: {filename}; Arguments: {arguments}; WorkingDirectory: {workingDirectory};";

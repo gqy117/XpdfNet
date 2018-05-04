@@ -7,7 +7,7 @@
 
     public class DirectoryServiceWindowsTest
     {
-        private IDirectoryService directoryService;
+        private readonly IDirectoryService directoryService;
 
         public DirectoryServiceWindowsTest()
         {

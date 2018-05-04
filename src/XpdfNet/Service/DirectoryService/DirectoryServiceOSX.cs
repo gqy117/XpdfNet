@@ -2,9 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Text;
 
-    public class DirectoryServiceLinux : DirectoryServiceUnix
+    public class DirectoryServiceOSX : DirectoryServiceUnix
     {
     }
 }

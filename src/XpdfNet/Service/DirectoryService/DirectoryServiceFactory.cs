@@ -4,9 +4,9 @@
     using System.Collections.Generic;
     using System.Text;
 
-    public class DirectoryServiceFactory
+    public static class DirectoryServiceFactory
     {
-        public IDirectoryService GetDirectoryService(IRuntimeInformation runtimeInformation)
+        public static IDirectoryService GetDirectoryService(IRuntimeInformation runtimeInformation)
         {
             IDirectoryService result = null;
 
@@ -20,8 +20,12 @@
                     result = new DirectoryServiceLinux();
                     break;
 
+                case OS.OSX:
+                    result = new DirectoryServiceOSX();
+                    break;
+
                 default:
-                    throw new ArgumentException("XpdfNet currently only supports Linux and Windows OS.");
+                    throw new ArgumentException("XpdfNet currently only supports Linux, Windows and OSX.");
             }
 
             return result;
