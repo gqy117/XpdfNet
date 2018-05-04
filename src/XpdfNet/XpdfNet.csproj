@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard1.6;net45</TargetFrameworks>
-    <Version>1.0.10</Version>
+    <Version>1.1.0</Version>
     <Authors>Leo Li</Authors>
     <Company />
     <Description>A C# wrapper for Xpdf.</Description>
-    <AssemblyVersion>1.0.10.0</AssemblyVersion>
-    <FileVersion>1.0.10.0</FileVersion>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.6|AnyCPU'">
     <DebugType>full</DebugType>
@@ -22,17 +22,28 @@
     <TreatSpecificWarningsAsErrors />
     <NoWarn>1701;1702;1705;SA1633;SA1652;</NoWarn>
   </PropertyGroup>
+    <PropertyGroup>
+    <IsWindows Condition="'$(OS)' == 'Windows_NT'">true</IsWindows>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MSBuildRuntimeType)' == 'Core'">
+    <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+    <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
   </ItemGroup>
   <ItemGroup>
-    <ContentWithTargetPath Include="lib\pdftotext">
+    <ContentWithTargetPath Include="lib\Windows_NT\pdftotext.exe" Condition="$(IsWindows) == 'true'">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>pdftotext.exe</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="lib\OSX\pdftotext" Condition="$(IsOSX) == 'true'">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>pdftotext</TargetPath>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="lib\pdftotext.exe">
+    <ContentWithTargetPath Include="lib\Unix\pdftotext" Condition="$(IsLinux) == 'true'">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <TargetPath>pdftotext.exe</TargetPath>
+      <TargetPath>pdftotext</TargetPath>
     </ContentWithTargetPath>
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">

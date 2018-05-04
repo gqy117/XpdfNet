@@ -1,20 +1,19 @@
 ﻿namespace XpdfNet.Tests
 {
     using System;
-    using System.Collections.Generic;
-    using System.Runtime.InteropServices;
+    using System.IO;
     using System.Text;
     using Moq;
     using XpdfNet;
     using Xunit;
 
-    public class DirectoryServiceLinuxTest
+    public class DirectoryServiceOSXTest
     {
-        private readonly IDirectoryService directoryService;
+        private IDirectoryService directoryService;
 
-        public DirectoryServiceLinuxTest()
+        public DirectoryServiceOSXTest()
         {
-            this.directoryService = new DirectoryServiceLinux();
+            this.directoryService = new DirectoryServiceOSX();
         }
 
         [Fact]
