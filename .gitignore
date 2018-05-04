@@ -155,3 +155,4 @@ node_modules
 !pdftotext.exe
 *.nuspec
 coverage.xml
+.vs/
