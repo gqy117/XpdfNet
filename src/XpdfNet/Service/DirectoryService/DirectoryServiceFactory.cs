@@ -6,7 +6,7 @@
 
     public class DirectoryServiceFactory
     {
-        public IDirectoryService GetDirectoryService(IRuntimeInformation runtimeInformation)
+        public static IDirectoryService GetDirectoryService(IRuntimeInformation runtimeInformation)
         {
             IDirectoryService result = null;
 

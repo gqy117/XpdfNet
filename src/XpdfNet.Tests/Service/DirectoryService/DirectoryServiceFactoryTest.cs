@@ -10,13 +10,11 @@
 
     public class DirectoryServiceFactoryTest
     {
-        private DirectoryServiceFactory directoryServiceFactory;
-        private Mock<IRuntimeInformation> mockRuntimeInformation;
+        private readonly Mock<IRuntimeInformation> mockRuntimeInformation;
 
         public DirectoryServiceFactoryTest()
         {
             this.mockRuntimeInformation = new Mock<IRuntimeInformation>();
-            this.directoryServiceFactory = new DirectoryServiceFactory();
         }
 
         [Fact]
@@ -26,7 +24,7 @@
             this.mockRuntimeInformation.Setup(x => x.GetOSPlatform()).Returns(OS.Linux);
 
             // Act
-            var actual = this.directoryServiceFactory.GetDirectoryService(this.mockRuntimeInformation.Object);
+            var actual = DirectoryServiceFactory.GetDirectoryService(this.mockRuntimeInformation.Object);
 
             // Assert
             Assert.IsType<DirectoryServiceLinux>(actual);
@@ -39,7 +37,7 @@
             this.mockRuntimeInformation.Setup(x => x.GetOSPlatform()).Returns(OS.OSX);
 
             // Act
-            var actual = this.directoryServiceFactory.GetDirectoryService(this.mockRuntimeInformation.Object);
+            var actual = DirectoryServiceFactory.GetDirectoryService(this.mockRuntimeInformation.Object);
 
             // Assert
             Assert.IsType<DirectoryServiceOSX>(actual);
@@ -54,7 +52,7 @@
             this.mockRuntimeInformation.Setup(x => x.GetOSPlatform()).Returns(os);
 
             // Act
-            Exception ex = Assert.Throws<ArgumentException>(() => this.directoryServiceFactory.GetDirectoryService(this.mockRuntimeInformation.Object));
+            Exception ex = Assert.Throws<ArgumentException>(() => DirectoryServiceFactory.GetDirectoryService(this.mockRuntimeInformation.Object));
 
             // Assert
             string expected = "XpdfNet currently only supports Linux, Windows and OSX.";
@@ -68,7 +66,7 @@
             this.mockRuntimeInformation.Setup(x => x.GetOSPlatform()).Returns(OS.Windows);
 
             // Act
-            var actual = this.directoryServiceFactory.GetDirectoryService(this.mockRuntimeInformation.Object);
+            var actual = DirectoryServiceFactory.GetDirectoryService(this.mockRuntimeInformation.Object);
 
             // Assert
             Assert.IsType<DirectoryServiceWindows>(actual);

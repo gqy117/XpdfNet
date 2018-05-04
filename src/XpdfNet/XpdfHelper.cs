@@ -15,7 +15,7 @@
         public XpdfHelper()
         {
             this.runtimeInformation = new MyRuntimeInformation();
-            this.directoryService = new DirectoryServiceFactory().GetDirectoryService(this.runtimeInformation);
+            this.directoryService = DirectoryServiceFactory.GetDirectoryService(this.runtimeInformation);
         }
 
         public string ToText(string pdfFilePath)

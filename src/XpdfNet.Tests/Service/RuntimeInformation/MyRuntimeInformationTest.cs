@@ -7,7 +7,7 @@
 
     public class MyRuntimeInformationTest
     {
-        private MyRuntimeInformation myRuntimeInformation;
+        private readonly MyRuntimeInformation myRuntimeInformation;
 
         public MyRuntimeInformationTest()
         {
@@ -21,7 +21,7 @@
             OS actual = this.myRuntimeInformation.GetOSPlatform();
 
             // Assert
-            OS expected = this.GetCurrentOS();
+            OS expected = GetCurrentOS();
             Assert.Equal(expected, actual);
         }
 
@@ -49,9 +49,9 @@
             Assert.Equal(expected, actual);
         }
 
-        private OS GetCurrentOS()
+        private static OS GetCurrentOS()
         {
-            OS os = OS.Unsupported;
+            OS os;
 
             string windir = Environment.GetEnvironmentVariable("windir");
             if (!string.IsNullOrEmpty(windir) && windir.Contains(@"\") && Directory.Exists(windir))

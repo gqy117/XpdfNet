@@ -36,6 +36,11 @@
 
         public abstract string GetArguments(XpdfParameter parameter);
 
+        protected static string WrapWith(string text, string ends)
+        {
+            return ends + text + ends;
+        }
+
         protected string JoinXpdfParameters(XpdfParameter parameter)
         {
             string[] argumentsArray =
@@ -51,12 +56,7 @@
 
         protected string WrapQuotes(string text)
         {
-            return this.WrapWith(text, "\"");
-        }
-
-        protected string WrapWith(string text, string ends)
-        {
-            return ends + text + ends;
+            return WrapWith(text, "\"");
         }
     }
 }
