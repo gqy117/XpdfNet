@@ -22,9 +22,8 @@
         public override string GetArguments(XpdfParameter parameter)
         {
             string arguments = this.JoinXpdfParameters(parameter);
-            string pdfToText = Path.Combine(this.WorkingDirectory, PDFToText);
 
-            var newArguments = $"-c \"chmod +x {pdfToText}; {pdfToText} {arguments}\"";
+            string newArguments = $"-c \"chmod +x ./{PDFToText}; ./{PDFToText} {arguments}\"";
 
             return newArguments;
         }
