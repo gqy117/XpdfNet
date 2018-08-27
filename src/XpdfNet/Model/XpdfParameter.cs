@@ -7,5 +7,7 @@
         public string Encoding { get; set; }
 
         public string PdfFilename { get; set; }
+
+        public string PDFLevel { get; set; }
     }
 }

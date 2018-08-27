@@ -45,6 +45,19 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>pdftotext</TargetPath>
     </ContentWithTargetPath>
+
+    <ContentWithTargetPath Include="lib\Windows_NT\pdftops.exe" Condition="$(IsWindows) == 'true'">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>pdftops.exe</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="lib\OSX\pdftops" Condition="$(IsOSX) == 'true'">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>pdftops</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="lib\Unix\pdftops" Condition="$(IsLinux) == 'true'">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>pdftops</TargetPath>
+    </ContentWithTargetPath>
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">
     <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />

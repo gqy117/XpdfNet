@@ -28,6 +28,9 @@
     <ProjectReference Include="..\XpdfNet\XpdfNet.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="Expected.ps">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Expected.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -42,7 +42,7 @@
             };
 
             // Act
-            string actual = this.directoryService.GetArguments(parameter);
+            string actual = this.directoryService.GetArgumentsToText(parameter);
 
             // Assert
             string expected = "-c \"chmod +x ./pdftotext; ./pdftotext -enc UTF-8 \"1.pdf\" \"1.txt\"\"";
