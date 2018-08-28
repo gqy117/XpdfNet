@@ -47,10 +47,13 @@
 
             // Act
             string actual = this.directoryService.GetArgumentsToText(parameter);
+            string actual2 = this.directoryService.GetArguments(parameter);
 
             // Assert
             string expected = "-c \"chmod +x ./pdftotext; ./pdftotext -enc UTF-8 \"1.pdf\" \"1.txt\"\"";
+
             Assert.Equal(expected, actual);
+            Assert.Equal(expected, actual2);
         }
 
         [Fact]
