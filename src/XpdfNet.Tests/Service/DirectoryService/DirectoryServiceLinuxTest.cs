@@ -24,10 +24,14 @@
 
             // Act
             string actual = this.directoryService.Filename;
+            string actual2 = this.directoryService.PDFToPSFilename;
+            string actual3 = this.directoryService.PDFToTextFilename;
 
             // Assert
             string expected = "/bin/bash";
             Assert.Equal(expected, actual);
+            Assert.Equal(expected, actual2);
+            Assert.Equal(expected, actual3);
         }
 
         [Fact]
