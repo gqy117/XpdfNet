@@ -65,7 +65,7 @@
             };
 
             // Act
-            string actual = this.directoryService.GetArgumentsToText(parameter);
+            string actual = this.directoryService.GetArgumentsToPS(parameter);
 
             // Assert
             string expected = "-c \"chmod +x ./pdftops; ./pdftops -level3 \"1.pdf\" \"1.txt\"\"";
