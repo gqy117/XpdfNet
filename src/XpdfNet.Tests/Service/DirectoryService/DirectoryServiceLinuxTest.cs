@@ -52,5 +52,24 @@
             string expected = "-c \"chmod +x ./pdftotext; ./pdftotext -enc UTF-8 \"1.pdf\" \"1.txt\"\"";
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void GetArguments_ShouldReturnPdftopsAndArguments()
+        {
+            // Arrange
+            XpdfParameter parameter = new XpdfParameter
+            {
+                PDFLevel = "-level3",
+                PdfFilename = "1.pdf",
+                OutputFilename = "1.txt"
+            };
+
+            // Act
+            string actual = this.directoryService.GetArgumentsToText(parameter);
+
+            // Assert
+            string expected = "-c \"chmod +x ./pdftops; ./pdftops -level3 \"1.pdf\" \"1.txt\"\"";
+            Assert.Equal(expected, actual);
+        }
     }
 }
