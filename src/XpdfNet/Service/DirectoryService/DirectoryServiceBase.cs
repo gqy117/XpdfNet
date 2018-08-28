@@ -2,6 +2,7 @@
 {
     using System;
     using System.IO;
+    using System.Linq;
     using System.Runtime.InteropServices;
 
     public abstract class DirectoryServiceBase : IDirectoryService
@@ -74,7 +75,7 @@
                 WrapQuotes(parameter.PdfFilename),
                 WrapQuotes(parameter.OutputFilename),
             };
-
+            argumentsArray = argumentsArray.Where(c => c != null).ToArray();
             string arguments = string.Join(" ", argumentsArray);
             return arguments;
         }
