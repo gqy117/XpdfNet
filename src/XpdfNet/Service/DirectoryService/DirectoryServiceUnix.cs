@@ -15,12 +15,14 @@
         {
             if (!File.Exists(PDFToText))
             {
-                throw new FileNotFoundException(PDFToText);
+                // throw new FileNotFoundException(PDFToText);
+                Console.WriteLine("Cannot find PDFToText executable.");
             }
 
             if (!File.Exists(PDFToPS))
             {
-                throw new FileNotFoundException(PDFToPS);
+                // throw new FileNotFoundException(PDFToPS);
+                Console.WriteLine("Cannot find PDFToPS executable.");
             }
         }
 

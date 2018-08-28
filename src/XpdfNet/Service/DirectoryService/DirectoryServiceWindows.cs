@@ -37,19 +37,20 @@
         [Obsolete("GetArguments is deprecated, please use GetArgumentsToText instead.")]
         public override string GetArguments(XpdfParameter parameter)
         {
-            var arguments = this.JoinXpdfParameters(parameter);
-
-            return arguments;
+            return this.JoinArgumentsInString(parameter);
         }
 
         public override string GetArgumentsToText(XpdfParameter parameter)
         {
-            var arguments = this.JoinXpdfParameters(parameter);
-
-            return arguments;
+            return this.JoinArgumentsInString(parameter);
         }
 
         public override string GetArgumentsToPS(XpdfParameter parameter)
+        {
+            return this.JoinArgumentsInString(parameter);
+        }
+
+        private string JoinArgumentsInString(XpdfParameter parameter)
         {
             var arguments = this.JoinXpdfParameters(parameter);
 
