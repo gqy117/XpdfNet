@@ -55,10 +55,14 @@
 
             // Act
             string actual = this.directoryService.GetArguments(par);
+            string actual2 = this.directoryService.GetArgumentsToText(par);
+            string actual3 = this.directoryService.GetArgumentsToPS(par);
 
             // Assert
             string expected = "-level3 \"b.pdf\" \"b.ps\"";
             Assert.Equal(expected, actual);
+            Assert.Equal(expected, actual2);
+            Assert.Equal(expected, actual3);
         }
     }
 }
