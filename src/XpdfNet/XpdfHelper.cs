@@ -70,16 +70,5 @@
 
             this.arguments = this.directoryService.GetArgumentsToText(this.parameter);
         }
-
-        [Obsolete("PrepareParameters is obsolete please use PrepareParametersToText")]
-        private void PrepareParameters(string pdfFilePath)
-        {
-            this.filename = this.directoryService.Filename;
-            this.workingDirectory = this.directoryService.WorkingDirectory;
-
-            this.parameter = this.directoryService.GetParameter(pdfFilePath);
-
-            this.arguments = this.directoryService.GetArgumentsToText(this.parameter);
-        }
     }
 }
