@@ -44,6 +44,7 @@
         private static string GetTextResult(XpdfParameter parameter)
         {
             string textResult = File.ReadAllText(parameter.OutputFilename);
+
             File.Delete(parameter.OutputFilename);
 
             return textResult;

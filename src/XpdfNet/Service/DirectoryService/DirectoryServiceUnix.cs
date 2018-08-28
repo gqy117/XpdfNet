@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Text;
 
     public class DirectoryServiceUnix : DirectoryServiceBase
@@ -9,6 +10,19 @@
         private const string PDFToText = "pdftotext";
         private const string PDFToPS = "pdftops";
         private const string Bash = "/bin/bash";
+
+        public DirectoryServiceUnix()
+        {
+            if (!File.Exists(PDFToText))
+            {
+                throw new FileNotFoundException(PDFToText);
+            }
+
+            if (!File.Exists(PDFToPS))
+            {
+                throw new FileNotFoundException(PDFToPS);
+            }
+        }
 
         public override string Filename => Bash;
 
@@ -19,11 +33,7 @@
         [Obsolete("GetArguments is deprecated, please use GetArgumentsToText instead.")]
         public override string GetArguments(XpdfParameter parameter)
         {
-            string arguments = this.JoinXpdfParameters(parameter);
-
-            string newArguments = $"-c \"chmod +x ./{PDFToText}; ./{PDFToText} {arguments}\"";
-
-            return newArguments;
+            return this.GetArgumentsToText(parameter);
         }
 
         public override string GetArgumentsToText(XpdfParameter parameter)
