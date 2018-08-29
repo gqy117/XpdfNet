@@ -68,8 +68,10 @@
 
         protected string JoinXpdfParameters(XpdfParameter parameter)
         {
+            string extra = parameter.ExtraArguments != null ? string.Join(" ", parameter.ExtraArguments) : null;
             string[] argumentsArray =
             {
+                extra,
                 parameter.Encoding,
                 parameter.PDFLevel,
                 WrapQuotes(parameter.PdfFilename),

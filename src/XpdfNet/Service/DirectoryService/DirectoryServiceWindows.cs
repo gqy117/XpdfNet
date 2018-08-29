@@ -54,7 +54,7 @@
         {
             var arguments = this.JoinXpdfParameters(parameter);
 
-            return arguments;
+            return arguments.Replace("  ", " ").TrimStart(' ');
         }
     }
 }

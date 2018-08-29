@@ -1,6 +1,7 @@
 ﻿namespace XpdfNet
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
 
     public class XpdfHelper
@@ -10,9 +11,17 @@
         private XpdfParameter parameter;
         private string workingDirectory;
         private string arguments;
+        private List<string> extraArguments = new List<string>();
 
         public XpdfHelper()
         {
+            IRuntimeInformation runtimeInformation = new MyRuntimeInformation();
+            this.directoryService = DirectoryServiceFactory.GetDirectoryService(runtimeInformation);
+        }
+
+        public XpdfHelper(List<string> extraarguments)
+        {
+            this.extraArguments = extraarguments;
             IRuntimeInformation runtimeInformation = new MyRuntimeInformation();
             this.directoryService = DirectoryServiceFactory.GetDirectoryService(runtimeInformation);
         }
@@ -57,7 +66,7 @@
             this.workingDirectory = this.directoryService.WorkingDirectory;
 
             this.parameter = this.directoryService.GetParameterToPs(pdfFilePath);
-
+            this.parameter.ExtraArguments = this.extraArguments;
             this.arguments = this.directoryService.GetArgumentsToPS(this.parameter);
         }
 
