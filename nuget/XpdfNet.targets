@@ -20,5 +20,17 @@
       <Link>pdftotext</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="$(MSBuildThisFileDirectory)Windows_NT/pdftops.exe" Condition="$(IsWindows) == 'true'">
+      <Link>pdftops.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Unix/pdftops" Condition="$(IsLinux) == 'true'">
+      <Link>pdftops</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)OSX/pdftops" Condition="$(IsOSX) == 'true'">
+      <Link>pdftops</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
