@@ -1,11 +1,23 @@
 ﻿namespace Xpdf.Wrapper
 {
+    /// <summary>
+    /// Parameters uses when converting a PDF to text.
+    /// </summary>
     public class PdfToTextParameters : IXpdfParameters
     {
+        /// <summary>
+        /// Optional output filename.  If omitted, text will be returned as a string.
+        /// </summary>
         public string OutputFilename { get; set; } = "-"; // "-" outputs to stdout
 
-        public string Encoding { get; set; } = "UTF-8";
+        /// <summary>
+        /// The encoding the outputted text will be encoded in.  Defaults to UTF-8.
+        /// </summary>
+        public string Encoding { get; set; } = Encodings.UTF_8;
 
+        /// <summary>
+        /// Required. PDF filename to convert to text.
+        /// </summary>
         public string PdfFilename { get; set; }
 
         public bool KeepLayout { get; set; } = false;
@@ -80,6 +92,11 @@
             }
 
             return string.Empty;
+        }
+
+        public void Validate()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
