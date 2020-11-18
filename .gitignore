@@ -156,3 +156,4 @@ node_modules
 *.nuspec
 coverage.xml
 .vs/
+/.vscode

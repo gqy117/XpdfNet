@@ -38,7 +38,7 @@
             {
                 Encoding = "-enc UTF-8",
                 PdfFilename = "1.pdf",
-                OutputFilename = "1.txt"
+                OutputFilename = "1.txt",
             };
 
             // Act

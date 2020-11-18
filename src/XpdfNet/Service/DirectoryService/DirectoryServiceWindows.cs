@@ -18,11 +18,9 @@
             }
         }
 
-        public override string GetArguments(XpdfParameter parameter)
+        public override string GetArguments(IXPdfParameters parameter)
         {
-            var arguments = this.JoinXpdfParameters(parameter);
-
-            return arguments;
+            return parameter.BuildArguments();
         }
     }
 }

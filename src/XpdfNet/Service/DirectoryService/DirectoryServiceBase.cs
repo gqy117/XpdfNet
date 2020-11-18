@@ -24,17 +24,17 @@
             }
         }
 
-        public XpdfParameter GetParameter(string pdfFilePath)
+        public IXPdfParameters GetParameter(string pdfFilePath)
         {
             return new XpdfParameter
             {
                 Encoding = "-enc UTF-8",
                 PdfFilename = pdfFilePath,
-                OutputFilename = Path.Combine(this.WorkingDirectory, Guid.NewGuid() + ".txt")
+                OutputFilename = "-", // Path.Combine(this.WorkingDirectory, Guid.NewGuid() + ".txt"),
             };
         }
 
-        public abstract string GetArguments(XpdfParameter parameter);
+        public abstract string GetArguments(IXPdfParameters parameter);
 
         protected static string WrapWith(string text, string ends)
         {

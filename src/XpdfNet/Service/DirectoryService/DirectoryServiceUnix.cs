@@ -11,9 +11,9 @@
 
         public override string Filename => Bash;
 
-        public override string GetArguments(XpdfParameter parameter)
+        public override string GetArguments(IXPdfParameters parameter)
         {
-            string arguments = this.JoinXpdfParameters(parameter);
+            string arguments = parameter.BuildArguments();
 
             string newArguments = $"-c \"chmod +x ./{PDFToText}; ./{PDFToText} {arguments}\"";
 
