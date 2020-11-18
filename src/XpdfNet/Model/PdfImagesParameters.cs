@@ -1,21 +1,26 @@
-﻿namespace Xpdf.Wrapper
+﻿using System;
+
+namespace Xpdf.Wrapper
 {
     public class PdfImagesParameters : IXpdfParameters
     {
-        public string OutputFilename { get; set; } = "-"; // "-" outputs to stdout
+        public bool OnlyListImages { get; set; } = false;
 
-        public string Encoding { get; set; } = "UTF-8";
+        public bool ExportAllImages { get; set; } = true;
+
+        public bool SaveAsPng { get; set; } = false;
 
         public string PdfFilename { get; set; }
 
-        public bool KeepLayout { get; set; } = false;
+        /// <summary>
+        /// Directory where images will be saved.
+        /// </summary>
+        public string OutputDir { get; set; }
 
-        public bool PageBreaks { get; set; } = true;
 
-        public bool Raw { get; set; } = false;
 
-        public bool DiscardDiagnalText { get; set; } = false;
 
+       
         /// <summary>
         /// Build command line arguments.
         /// </summary>
@@ -23,63 +28,47 @@
         public string BuildArguments()
         {
             return
-                this.OutputEncoding() +
-                this.OutputKeepLayout() +
-                this.OutputPageBreaks() +
-                this.OutputRaw() +
-                this.OutputDiscardDiagnalText() +
+                this.OutputOnlyListImages() +
+                this.OutputExportAllImages() +
+                this.OutputSaveAsPng() +
                 " " + this.PdfFilename +
-                " " + this.OutputFilename;
+                " " + this.OutputDir;
         }
 
-        private string OutputEncoding()
+        private string OutputOnlyListImages()
         {
-            if (string.IsNullOrWhiteSpace(this.Encoding))
-            {
+                if (this.OnlyListImages)
+                {
+                    return " -list";
+                }
+
                 return string.Empty;
             }
 
-            return " -enc " + this.Encoding;
-        }
-
-        private string OutputKeepLayout()
+        private string OutputExportAllImages()
         {
-            if (this.KeepLayout)
+            if (this.ExportAllImages)
             {
-                return " -layout";
+                return " -all";
             }
 
             return string.Empty;
         }
 
-        private string OutputPageBreaks()
+        private string OutputSaveAsPng()
         {
-            if (this.PageBreaks)
+            if (this.SaveAsPng)
             {
-                return string.Empty;
-            }
-
-            return " -nopgbrk";
-        }
-
-        private string OutputRaw()
-        {
-            if (this.Raw)
-            {
-                return " -raw";
+                return " -png";
             }
 
             return string.Empty;
         }
 
-        private string OutputDiscardDiagnalText()
+        public void Validate()
         {
-            if (this.DiscardDiagnalText)
-            {
-                return " -nodiag";
-            }
-
-            return string.Empty;
+            // TODO: Come back to later
+            throw new NotImplementedException();
         }
     }
 }
