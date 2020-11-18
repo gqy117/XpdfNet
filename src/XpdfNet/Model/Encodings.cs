@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Xpdf.Wrapper
+﻿namespace Xpdf.Wrapper
 {
     public static class Encodings
     {
@@ -28,7 +24,6 @@ namespace Xpdf.Wrapper
         public static string UTF_16 => "UTF-16";
         public static string UTF_8 => "UTF-8";
         public static string Windows_1255 => "Windows-1255";
-            public static string ZapfDingbats => "ZapfDingbats";
-        /// </remarks>
+        public static string ZapfDingbats => "ZapfDingbats";
     }
 }

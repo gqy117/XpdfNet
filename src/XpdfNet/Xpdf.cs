@@ -4,6 +4,7 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Runtime.InteropServices;
 
     /// <summary>
     /// Contains method wrappers around XPDF library.
@@ -42,12 +43,24 @@
         private static string ExecuteXpdf(XpdfExecutable xpdfExecutable, IXpdfParameters iXPdfParameters)
         {
             // Validate Params, perhaps have a validation routine in each
+            iXPdfParameters.Validate();
+
             // Determine OS
-            // Get Exename from Executable
-            // Get arguments from Parameters
+            var os = GetOperatingSystem();
+
+            // Get Exe name
+            var xpdfFilename = xpdfExecutable.GetXpdfExecutableName(os);
+
+            // Get CL arguments from Parameters
+            var initialArguments = iXPdfParameters.BuildArguments();
+
+            var workingDir = GetWorkingDir();
+
             // Build Params from Executable and arguments
-            // Get working dir 
-            ProcessService processService = new ProcessService(this.filename, this.arguments, thisorkingDirectory);
+            var (exeFilename, finalArguments) = BuildCommandLine(xpdfFilename, initialArguments, os, workingDir);
+
+            // Get working dir
+            ProcessService processService = new ProcessService(exeFilename, finalArguments, workingDir);
             processService.StartAndWaitForExit();
 
             var textResult = processService.StandardOutout;
@@ -55,14 +68,58 @@
             return textResult;
         }
 
-        private (string, string) PrepareParameters(string pdfFilePath)
+        private static (string exeFilename, string finalArguments) BuildCommandLine(string xpdfFilename, string initialArguments, OS os, string workingDir)
         {
-            this.filename = this.directoryService.Filename;
-            this.workingDirectory = this.directoryService.WorkingDirectory;
+            switch (os)
+            {
+                case OS.Windows:
+                    return BuildCommandLineWindows(xpdfFilename, initialArguments, workingDir);
+                case OS.Linux:
+                    return BuildCommandLineLinux(xpdfFilename, initialArguments);
+            }
 
-            this.parameter = this.directoryService.GetParameter(pdfFilePath);
+            throw new Exception($"Unsupported operating system: {os}");
+        }
 
-            this.arguments = this.directoryService.GetArguments(this.parameter);
+        private static (string exeFilename, string finalArguments) BuildCommandLineWindows(string xpdfFilename, string initialArguments, string workingDir)
+        {
+            return (Path.Combine(workingDir, xpdfFilename), initialArguments);
+        }
+
+        private static string GetWorkingDir()
+        {
+#if NET461
+            return AppDomain.CurrentDomain.BaseDirectory;
+#else
+            return AppContext.BaseDirectory;
+#endif
+        }
+
+        private static (string exeFilename, string finalArguments) BuildCommandLineLinux(string xpdfFilename, string initialArguments)
+        {
+            var bash = "/bin/bash";
+
+            string newArguments = $"-c \"chmod +x ./{xpdfFilename}; ./{xpdfFilename} {initialArguments}\"";
+
+            return (bash, newArguments);
+        }
+
+        private static OS GetOperatingSystem()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return OS.Windows;
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return OS.Linux;
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                return OS.OSX;
+            }
+
+            return OS.Unsupported;
         }
     }
 }
