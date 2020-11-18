@@ -40,8 +40,8 @@
                 this.OutputPageBreaks() +
                 this.OutputRaw() +
                 this.OutputDiscardDiagnalText() +
-                " " + this.PdfFilename +
-                " " + this.OutputFilename;
+                $" \"{this.PdfFilename}\"" +
+                $" \"{this.OutputFilename}\"";
         }
 
         private string OutputEncoding()

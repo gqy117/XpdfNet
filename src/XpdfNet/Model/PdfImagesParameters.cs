@@ -31,8 +31,8 @@ namespace Xpdf.Wrapper
                 this.OutputOnlyListImages() +
                 this.OutputExportAllImages() +
                 this.OutputSaveAsPng() +
-                " " + this.PdfFilename +
-                " " + this.OutputDir;
+                $" \"{this.PdfFilename}\"" +
+                $" \"{this.OutputDir}\"";
         }
 
         private string OutputOnlyListImages()

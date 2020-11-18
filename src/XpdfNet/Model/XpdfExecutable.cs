@@ -38,10 +38,5 @@ namespace Xpdf.Wrapper.Model
             //Will be XpdfExec name if windows
             //Will throw exception for mac
         }
-
-        internal params GetParams(OS os)
-        {
-            //if
-        }
     }
 }

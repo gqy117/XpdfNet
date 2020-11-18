@@ -69,7 +69,6 @@
                 this.process.BeginOutputReadLine();
                 this.process.BeginErrorReadLine();
                 this.process.WaitForExit();
-                this.process.
 
                 if (this.errorBuilder.Length > 0)
                 {

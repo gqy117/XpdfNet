@@ -57,7 +57,7 @@
             var workingDir = GetWorkingDir();
 
             // Build Params from Executable and arguments
-            var (exeFilename, finalArguments) = BuildCommandLine(xpdfFilename, initialArguments, os, workingDir);
+            (string exeFilename, string finalArguments) = BuildCommandLine(xpdfFilename, initialArguments, os, workingDir);
 
             // Get working dir
             ProcessService processService = new ProcessService(exeFilename, finalArguments, workingDir);
@@ -106,6 +106,9 @@
 
         private static OS GetOperatingSystem()
         {
+#if NET461
+            return OS.Windows;
+#else
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 return OS.Windows;
@@ -120,6 +123,7 @@
             }
 
             return OS.Unsupported;
+#endif
         }
     }
 }
