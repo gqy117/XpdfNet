@@ -36,12 +36,6 @@
     <AdditionalFiles Include="GlobalSuppressions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
     <ContentWithTargetPath Include="lib\Windows_NT\pdftotext.exe" Condition="$(IsWindows) == 'true'">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>pdftotext.exe</TargetPath>

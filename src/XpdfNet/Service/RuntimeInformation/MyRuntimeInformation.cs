@@ -1,4 +1,4 @@
-﻿namespace XpdfNet
+﻿namespace Xpdf.Wrapper
 {
     using System;
     using System.Runtime.InteropServices;
@@ -11,11 +11,13 @@
 
 #if NET45
             os = OS.Windows;
-#else
+#elif NETSTANDARD2_0
             bool isLinux = RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
             bool isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
 
             os = this.GetOSPlatform(isLinux, isWindows);
+#else
+            throw new Exception("Unknown OS");
 #endif
 
             return os;

@@ -5,11 +5,13 @@
     using System.Runtime.InteropServices;
     using System.Text;
     using Moq;
+    using Xpdf.Wrapper;
     using XpdfNet;
     using Xunit;
 
     public class DirectoryServiceFactoryTest
     {
+        /*
         private readonly Mock<IRuntimeInformation> mockRuntimeInformation;
 
         public DirectoryServiceFactoryTest()
@@ -71,5 +73,6 @@
             // Assert
             Assert.IsType<DirectoryServiceWindows>(actual);
         }
+        */
     }
 }

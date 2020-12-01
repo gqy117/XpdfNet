@@ -7,13 +7,7 @@
 
     public class XpdfHelperTest
     {
-        private readonly XpdfHelper xpdfHelper;
-
-        public XpdfHelperTest()
-        {
-            this.xpdfHelper = new XpdfHelper();
-        }
-
+        /*
         [Fact]
         public void ToText_ShouldReturnText()
         {
@@ -44,5 +38,6 @@
 
             return result;
         }
+        */
     }
 }

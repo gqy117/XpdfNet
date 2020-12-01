@@ -1,4 +1,4 @@
-﻿namespace XpdfNet
+﻿namespace Xpdf.Wrapper
 {
     public interface IRuntimeInformation
     {

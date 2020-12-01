@@ -6,9 +6,9 @@
     using Xunit;
 
     public class MyRuntimeInformationTest
-    {
+    {/*
         private readonly MyRuntimeInformation myRuntimeInformation;
-
+        
         public MyRuntimeInformationTest()
         {
             this.myRuntimeInformation = new MyRuntimeInformation();
@@ -83,5 +83,6 @@
 
             return os;
         }
+        */
     }
 }

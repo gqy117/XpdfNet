@@ -7,6 +7,7 @@
 
     public class DirectoryServiceWindowsTest
     {
+        /*
         private readonly IDirectoryService directoryService;
 
         public DirectoryServiceWindowsTest()
@@ -26,5 +27,6 @@
             string expected = Path.Combine(this.directoryService.WorkingDirectory, "pdftotext.exe");
             Assert.Equal(expected, actual);
         }
+        */
     }
 }

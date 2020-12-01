@@ -1,8 +1,6 @@
 ﻿namespace Xpdf.Wrapper
 {
-    using global::Xpdf.Wrapper.Model;
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Runtime.InteropServices;
 
@@ -14,7 +12,7 @@
         //private readonly IDirectoryService directoryService;
         //private string filename;
 
-        private const string PDF_TO_TEXT = "PdfToText";
+        //private const string PDF_TO_TEXT = "PdfToText";
 
         /*
         public Xpdf()
@@ -29,7 +27,6 @@
         /// </summary>
         /// <param name="pdfToTextParameters"></param>
         /// <returns>Returns extracted text OR location of extracted files (depends on options selected).</returns>
-
         public static string PdfToText(PdfToTextParameters pdfToTextParameters)
         {
             return ExecuteXpdf(new XpdfExecutable("pdftotext", null, "PdfToText.exe"), pdfToTextParameters);
@@ -57,10 +54,10 @@
             var workingDir = GetWorkingDir();
 
             // Build Params from Executable and arguments
-            (string exeFilename, string finalArguments) = BuildCommandLine(xpdfFilename, initialArguments, os, workingDir);
+            var commandLineValues = BuildCommandLine(xpdfFilename, initialArguments, os, workingDir);
 
             // Get working dir
-            ProcessService processService = new ProcessService(exeFilename, finalArguments, workingDir);
+            ProcessService processService = new ProcessService(commandLineValues.ExeFilename, commandLineValues.FinalArguments, workingDir);
             processService.StartAndWaitForExit();
 
             var textResult = processService.StandardOutout;
@@ -68,7 +65,7 @@
             return textResult;
         }
 
-        private static (string exeFilename, string finalArguments) BuildCommandLine(string xpdfFilename, string initialArguments, OS os, string workingDir)
+        private static CommandLineValues BuildCommandLine(string xpdfFilename, string initialArguments, OS os, string workingDir)
         {
             switch (os)
             {
@@ -81,9 +78,9 @@
             throw new Exception($"Unsupported operating system: {os}");
         }
 
-        private static (string exeFilename, string finalArguments) BuildCommandLineWindows(string xpdfFilename, string initialArguments, string workingDir)
+        private static CommandLineValues BuildCommandLineWindows(string xpdfFilename, string initialArguments, string workingDir)
         {
-            return (Path.Combine(workingDir, xpdfFilename), initialArguments);
+            return new CommandLineValues(Path.Combine(workingDir, xpdfFilename), initialArguments);
         }
 
         private static string GetWorkingDir()
@@ -95,13 +92,13 @@
 #endif
         }
 
-        private static (string exeFilename, string finalArguments) BuildCommandLineLinux(string xpdfFilename, string initialArguments)
+        private static CommandLineValues BuildCommandLineLinux(string xpdfFilename, string initialArguments)
         {
             var bash = "/bin/bash";
 
             string newArguments = $"-c \"chmod +x ./{xpdfFilename}; ./{xpdfFilename} {initialArguments}\"";
 
-            return (bash, newArguments);
+            return new CommandLineValues(bash, newArguments);
         }
 
         private static OS GetOperatingSystem()

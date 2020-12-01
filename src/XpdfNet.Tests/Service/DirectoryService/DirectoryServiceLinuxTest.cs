@@ -10,6 +10,7 @@
 
     public class DirectoryServiceLinuxTest
     {
+        /*
         private readonly IDirectoryService directoryService;
 
         public DirectoryServiceLinuxTest()
