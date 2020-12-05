@@ -1,6 +1,7 @@
 ﻿namespace Xpdf.Wrapper
 {
     using System;
+    using System.Diagnostics;
     using System.IO;
     using System.Runtime.InteropServices;
 
@@ -32,6 +33,16 @@
             return ExecuteXpdf(new XpdfExecutable("pdftotext", null, "PdfToText.exe"), pdfToTextParameters);
         }
 
+        /// <summary>
+        /// Extracts text from filename using default parameters.
+        /// </summary>
+        /// <param name="filename">PDF filename to extract text from.</param>
+        /// <returns>Returns extracted text OR location of extracted files (depends on options selected).</returns>
+        public static string PdfToText(string filename)
+        {
+            return ExecuteXpdf(new XpdfExecutable("pdftotext", null, "PdfToText.exe"), new PdfToTextParameters(filename));
+        }
+
         public static string PdfImages(PdfImagesParameters pdfImagesParameters)
         {
             return ExecuteXpdf(new XpdfExecutable("pdfimages", null, "PdfImages.exe"), pdfImagesParameters);
@@ -57,12 +68,25 @@
             var commandLineValues = BuildCommandLine(xpdfFilename, initialArguments, os, workingDir);
 
             // Get working dir
-            ProcessService processService = new ProcessService(commandLineValues.ExeFilename, commandLineValues.FinalArguments, workingDir);
-            processService.StartAndWaitForExit();
+            var process = new Process()
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = commandLineValues.ExeFilename,
+                    Arguments = commandLineValues.FinalArguments,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true,
+                    StandardOutputEncoding = System.Text.Encoding.UTF8,  // Need to pull from available encodings?
+                    WorkingDirectory = workingDir,
+                    UseShellExecute = false
+                }
+            };
 
-            var textResult = processService.StandardOutout;
+            process.Start();
+            var textResult = process.StandardOutput;
+            process.WaitForExit();
 
-            return textResult;
+            return textResult.ReadToEnd();
         }
 
         private static CommandLineValues BuildCommandLine(string xpdfFilename, string initialArguments, OS os, string workingDir)

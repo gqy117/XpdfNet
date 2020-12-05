@@ -41,10 +41,13 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\XpdfNet\Xpdf.Wrapper.csproj" />
+    <ProjectReference Include="..\Xpdf.Wrapper\Xpdf.Wrapper.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Expected.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="NoParams.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="sample1.pdf">

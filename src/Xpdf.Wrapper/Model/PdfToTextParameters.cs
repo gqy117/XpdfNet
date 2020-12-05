@@ -5,6 +5,11 @@
     /// </summary>
     public class PdfToTextParameters : IXpdfParameters
     {
+        public PdfToTextParameters(string pdfFilename)
+        {
+            PdfFilename = pdfFilename;
+        }
+
         /// <summary>
         /// Optional output filename.  If omitted, text will be returned as a string.
         /// </summary>
@@ -96,7 +101,6 @@
 
         public void Validate()
         {
-            throw new System.NotImplementedException();
         }
     }
 }
