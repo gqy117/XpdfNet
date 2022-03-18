@@ -17,9 +17,9 @@
             this.directoryService = DirectoryServiceFactory.GetDirectoryService(runtimeInformation);
         }
 
-        public string ToText(string pdfFilePath)
+        public string ToText(string pdfFilePath, string arguments = "")
         {
-            this.PrepareParameters(pdfFilePath);
+            this.PrepareParameters(pdfFilePath, arguments);
 
             ProcessService processService = new ProcessService(this.filename, this.arguments, this.workingDirectory);
             processService.StartAndWaitForExit();
@@ -37,7 +37,7 @@
             return textResult;
         }
 
-        private void PrepareParameters(string pdfFilePath)
+        private void PrepareParameters(string pdfFilePath, string arguments = "")
         {
             this.filename = this.directoryService.Filename;
             this.workingDirectory = this.directoryService.WorkingDirectory;
@@ -45,6 +45,8 @@
             this.parameter = this.directoryService.GetParameter(pdfFilePath);
 
             this.arguments = this.directoryService.GetArguments(this.parameter);
+
+            this.arguments += $" {arguments}";
         }
     }
 }
