@@ -14,3 +14,7 @@ var pdfHelper = new XpdfHelper();
 
 string content = pdfHelper.ToText("./pathToFile.pdf");
 ```
+Or with arguments
+```csharp
+string content = pdfHelper.ToText("./pathToFile.pdf", "-eol unix −lineprinter");
+```
