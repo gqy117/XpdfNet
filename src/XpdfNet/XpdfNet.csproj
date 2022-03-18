@@ -1,12 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TargetFrameworks>netstandard1.6;net45</TargetFrameworks>
-    <Version>1.1.1</Version>
+    <Version>1.2.0</Version>
     <Authors>Leo Li</Authors>
     <Company />
     <Description>A C# wrapper for Xpdf.</Description>
-    <AssemblyVersion>1.1.1.0</AssemblyVersion>
-    <FileVersion>1.1.1.0</FileVersion>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.6|AnyCPU'">
     <DebugType>full</DebugType>
@@ -30,7 +30,9 @@
     <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+	  <PackageReference Include="StyleCop.Analyzers">
+		  <Version>1.0.2</Version>
+	  </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ContentWithTargetPath Include="lib\Windows_NT\pdftotext.exe" Condition="$(IsWindows) == 'true'">
@@ -47,6 +49,8 @@
     </ContentWithTargetPath>
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">
-    <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
+	  <PackageReference Include="System.Diagnostics.Process">
+		  <Version>4.3.0</Version>
+	  </PackageReference>
   </ItemGroup>
 </Project>

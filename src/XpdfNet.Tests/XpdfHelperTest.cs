@@ -21,7 +21,7 @@
             // Arrange
 
             // Act
-            string actual = this.xpdfHelper.ToText("sample1.pdf");
+            string actual = this.xpdfHelper.ToText("sample1.pdf", "-eol unix −lineprinter");
             actual = RemoveWhiteSpace(actual);
 
             // Assert
